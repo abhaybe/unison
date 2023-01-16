@@ -4,6 +4,7 @@ import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/goo
 import "../../utilities.css";
 import "./Skeleton.css";
 import CreateLobby from "../modules/CreateLobby";
+import JoinLobby from "../modules/JoinLobby";
 
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 // const GOOGLE_CLIENT_ID = "808533395363-h4ejmvg7ut0loi69pt6pqacr16mtuiqm.apps.googleusercontent.com";
@@ -46,6 +47,7 @@ const Skeleton = () => {
     <>
       <p> hello</p>
       <CreateLobby />
+      <JoinLobby />
     </>
   );
 };
