@@ -14,6 +14,7 @@ import "../utilities.css";
 import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
+import Leaderboard from "./pages/Leaderboard.js";
 
 /**
  * Define the "App" component
@@ -53,6 +54,7 @@ const App = () => {
         {/*handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} */}
         <NotFound default />
         <Profile path="/profile" />
+        <Leaderboard path="/leaderboard" />
       </Router>
     </>
   );
