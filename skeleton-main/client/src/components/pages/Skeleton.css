@@ -1,1 +1,9 @@
-/* Fill me in :) */
+.backgroundgradient {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(57, 109, 255, 1) 32%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}

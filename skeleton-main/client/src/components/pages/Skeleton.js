@@ -45,7 +45,7 @@ const Skeleton = () => {
     //   </a>
     // </GoogleOAuthProvider>
     <>
-      <p> hello</p>
+      <p>Welcome to U&Ison!</p>
       <CreateLobby />
       <JoinLobby />
     </>

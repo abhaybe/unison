@@ -9,7 +9,11 @@ import "./NavBar.css";
 const NavBar = () => {
   return (
     <nav className="NavBar-container">
-      <div className="NavBar-title u-inlineBlock">Unison</div>
+      <div className="NavBar-title u-inlineBlock">
+        <Link to="/" className="NavBar-link">
+          Unison
+        </Link>
+      </div>
       <div className="NavBar-linkContainer u-inlineBlock">
         <Link to="/" className="NavBar-link">
           Home
