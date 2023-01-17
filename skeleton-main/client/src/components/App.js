@@ -53,6 +53,7 @@ const App = () => {
         {/*handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} */}
         <NotFound default />
         <Profile path="/profile" />
+        <Lobby path="/lobby" />
       </Router>
     </>
   );
