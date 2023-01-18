@@ -24,7 +24,6 @@ const express = require("express"); // backend framework for our node server.
 const session = require("express-session"); // library that stores info about each connected user
 const mongoose = require("mongoose"); // library to connect to MongoDB
 const path = require("path"); // provide utilities for working with file and directory paths
-const { SERVER_SECRET, MONGO_SRV, MONGO_DATABASE } = require("../.env");
 
 const api = require("./api");
 const auth = require("./auth");
@@ -34,9 +33,9 @@ const socketManager = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL = MONGO_SRV;
+const mongoConnectionURL = "FILL ME IN";
 // TODO change database name to the name you chose
-const databaseName = MONGO_DATABASE;
+const databaseName = "FILL ME IN";
 
 // connect to mongodb
 mongoose

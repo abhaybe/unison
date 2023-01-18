@@ -4,17 +4,12 @@ import jwt_decode from "jwt-decode";
 
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
-import Profile from "./pages/Profile.js";
-import Lobby from "./pages/Lobby.js";
-import Game from "./pages/Game.js";
 
-import NavBar from "./modules/NavBar.js";
 import "../utilities.css";
 
 import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
-import Leaderboard from "./pages/Leaderboard.js";
 
 /**
  * Define the "App" component
@@ -48,13 +43,9 @@ const App = () => {
 
   return (
     <>
-      <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
       <Router>
-        <Skeleton path="/" />
+        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <NotFound default />
-        <Profile path="/profile" />
-        <Leaderboard path="/leaderboard" />
-        <Lobby path="/lobby" />
       </Router>
     </>
   );
