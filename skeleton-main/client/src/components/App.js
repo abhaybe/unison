@@ -48,9 +48,9 @@ const App = () => {
     <>
       <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
       <Router>
-        <Skeleton path="/" />
+        <Skeleton path="/" userId={userId} />
         <NotFound default />
-        <Profile path="/profile" />
+        <Profile path="/profile" userId={userId} />
         <Leaderboard path="/leaderboard" />
       </Router>
     </>

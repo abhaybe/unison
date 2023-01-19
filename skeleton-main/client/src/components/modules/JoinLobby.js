@@ -26,17 +26,11 @@ const JoinLobby = () => {
       <h3> Join a Lobby!</h3>
       <div>
         <input type="text" placeholder="Username:" value={name} onChange={handleChangeTwo} />
-        <button
-          type="submit"
-          className="NewPostInput-button u-pointer"
-          value="Submit"
-          //   onClick={handleSubmit}
-        >
-          Submit
-        </button>
       </div>
       <div>
         <input type="text" placeholder="Game Code:" value={value} onChange={handleChange} />
+      </div>
+      <div>
         <button
           type="submit"
           className="NewPostInput-button u-pointer"

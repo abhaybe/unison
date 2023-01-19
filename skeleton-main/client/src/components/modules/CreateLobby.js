@@ -26,17 +26,11 @@ const CreateLobby = () => {
       <h3> Create a new lobby!</h3>
       <div>
         <input type="text" placeholder="Type Username" value={name} onChange={handleChangeTwo} />
-        <button
-          type="submit"
-          className="NewPostInput-button u-pointer"
-          value="Submit"
-          //   onClick={handleSubmit}
-        >
-          Submit
-        </button>
       </div>
       <div>
         <input type="text" placeholder="Type lobby name" value={value} onChange={handleChange} />
+      </div>
+      <div>
         <button
           type="submit"
           className="NewPostInput-button u-pointer"

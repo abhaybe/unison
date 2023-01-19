@@ -5,7 +5,10 @@ import CreateLobby from "../modules/CreateLobby.js";
 import JoinLobby from "../modules/JoinLobby.js";
 import "./Skeleton.css";
 
-const Skeleton = () => {
+const Skeleton = (props) => {
+  if (!props.userId) {
+    return <div>Log in before playing</div>;
+  }
   return (
     <>
       {" "}
