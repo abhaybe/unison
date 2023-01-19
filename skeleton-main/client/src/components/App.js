@@ -52,6 +52,7 @@ const App = () => {
         <NotFound default />
         <Profile path="/profile" userId={userId} />
         <Leaderboard path="/leaderboard" />
+        <Lobby path="/lobby" />
       </Router>
     </>
   );
