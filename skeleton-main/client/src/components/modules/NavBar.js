@@ -21,12 +21,12 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
         <Link to="/" className="NavBar-link">
           Home
         </Link>
-        {/* <Link to="/profile/" className="NavBar-link">
+        <Link to="/profile/" className="NavBar-link">
           Profile
         </Link>
         <Link to="/leaderboard/" className="NavBar-link">
           Leaderboard
-        </Link> */}
+        </Link>
         <div className="NavBar-link">
           <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
             {userId ? (
