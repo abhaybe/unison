@@ -13,10 +13,12 @@ const Skeleton = (props) => {
   const [userName, setName] = useState("");
 
   useEffect(() => {
-    get("/api/whoami").then((user) => {
+    get("/api/getuser", { userId: props.userId }).then((user) => {
       setName(user.username);
+      console.log(props.userId);
+      console.log("hi", user);
     });
-  }, [userName]);
+  }, []);
 
   return (
     <div className="center-div">
