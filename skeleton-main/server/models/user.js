@@ -4,6 +4,7 @@ const UserSchema = new mongoose.Schema({
   name: String,
   googleid: String,
   wins: Number,
+  username: String,
 });
 
 // compile model from schema

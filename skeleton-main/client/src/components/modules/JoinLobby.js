@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "@reach/router";
 import "./JoinLobby.css";
 
-const JoinLobby = () => {
+const JoinLobby = (props) => {
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
 
@@ -25,7 +25,7 @@ const JoinLobby = () => {
     <div>
       <h3> Join a Lobby!</h3>
       <div>
-        <input type="text" placeholder="Username:" value={name} onChange={handleChangeTwo} />
+        <p>{props.userName}</p>
       </div>
       <div>
         <input type="text" placeholder="Game Code:" value={value} onChange={handleChange} />

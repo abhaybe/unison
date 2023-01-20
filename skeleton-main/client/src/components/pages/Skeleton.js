@@ -13,8 +13,8 @@ const Skeleton = (props) => {
     <>
       {" "}
       <h1>orion and abhay say hi</h1>
-      <CreateLobby />
-      <JoinLobby />
+      <CreateLobby userName={props.userName} />
+      <JoinLobby userName={props.userName} />
     </>
   );
 };
