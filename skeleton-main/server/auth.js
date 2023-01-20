@@ -7,6 +7,14 @@ const socketManager = require("./server-socket");
 const CLIENT_ID = "808533395363-h4ejmvg7ut0loi69pt6pqacr16mtuiqm.apps.googleusercontent.com";
 const client = new OAuth2Client(CLIENT_ID);
 
+var gobyOptions = {
+  decorator: function allCaps(pieces) {
+    return pieces.join(" ").toLowerCase();
+  },
+};
+
+var goby = require("goby").init(gobyOptions);
+
 // accepts a login token from the frontend, and verifies that it's legit
 function verify(token) {
   return client
@@ -27,6 +35,7 @@ function getOrCreateUser(user) {
       name: user.name,
       googleid: user.sub,
       wins: 0,
+      username: goby.generate(["adj", "pre", "suf"]),
     });
 
     return newUser.save();
