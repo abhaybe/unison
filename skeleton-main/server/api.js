@@ -21,6 +21,8 @@ const router = express.Router();
 //initialize socket
 const socketManager = require("./server-socket");
 
+const Users = require("./models/user");
+
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
 router.get("/whoami", (req, res) => {
@@ -39,7 +41,11 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 
-router.get("/scores", (req, res) => {});
+router.get("/scores", (req, res) => {
+  User.find()
+    .sort({ wins: -1, username: 1 })
+    .then((messages) => res.send(messages));
+});
 
 // |------------------------------|
 // | write your API methods below!|
