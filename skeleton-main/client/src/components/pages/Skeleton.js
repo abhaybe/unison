@@ -10,12 +10,14 @@ const Skeleton = (props) => {
     return <div>Log in before playing</div>;
   }
   return (
-    <>
+    <div className="center-div">
       {" "}
-      <h1>Hello {props.userName}, let's play UnIson</h1>
+      <h1>
+        Hello <span className="gradient-text">{props.userName}</span>, let's play UnIson
+      </h1>
       <CreateLobby userName={props.userName} />
       <JoinLobby userName={props.userName} />
-    </>
+    </div>
   );
 };
 

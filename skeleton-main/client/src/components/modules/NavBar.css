@@ -1,5 +1,5 @@
 .NavBar-container {
-  padding: var(--s) var(--m);
+  padding: var(--m) var(--m);
   background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
