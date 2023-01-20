@@ -12,7 +12,7 @@ const Skeleton = (props) => {
   return (
     <>
       {" "}
-      <h1>orion and abhay say hi</h1>
+      <h1>Hello {props.userName}, let's play UnIson</h1>
       <CreateLobby userName={props.userName} />
       <JoinLobby userName={props.userName} />
     </>

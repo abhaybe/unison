@@ -24,9 +24,7 @@ const CreateLobby = (props) => {
   return (
     <div>
       <h3> Create a new lobby!</h3>
-      <div>
-        <p> {props.userName}</p>
-      </div>
+      <div>{/* <p> {props.userName}</p> */}</div>
       <div>
         <input type="text" placeholder="Type lobby name" value={value} onChange={handleChange} />
       </div>

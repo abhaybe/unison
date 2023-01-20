@@ -24,9 +24,7 @@ const JoinLobby = (props) => {
   return (
     <div>
       <h3> Join a Lobby!</h3>
-      <div>
-        <p>{props.userName}</p>
-      </div>
+      <div>{/* <p>{props.userName}</p> */}</div>
       <div>
         <input type="text" placeholder="Game Code:" value={value} onChange={handleChange} />
       </div>
