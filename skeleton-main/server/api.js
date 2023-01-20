@@ -39,6 +39,8 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 
+router.get("/scores", (req, res) => {});
+
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|

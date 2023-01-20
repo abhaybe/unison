@@ -7,6 +7,7 @@ import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/NavBar.js";
 import Profile from "./pages/Profile.js";
 import Leaderboard from "./pages/Leaderboard.js";
+import Lobby from "./pages/Lobby.js";
 
 import "../utilities.css";
 
