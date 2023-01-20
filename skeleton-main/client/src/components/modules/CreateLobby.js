@@ -4,14 +4,10 @@ import "./CreateLobby.css";
 
 const CreateLobby = (props) => {
   const [value, setValue] = useState("");
-  const [name, setName] = useState("");
 
   // called whenever the user types in the new post input box
   const handleChange = (event) => {
     setValue(event.target.value);
-  };
-  const handleChangeTwo = (event) => {
-    setName(event.target.value);
   };
 
   // called when the user hits "Submit" for a new post

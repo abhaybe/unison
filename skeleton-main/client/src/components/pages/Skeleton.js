@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "../../utilities.css";
 import CreateLobby from "../modules/CreateLobby.js";
 import JoinLobby from "../modules/JoinLobby.js";
 import "./Skeleton.css";
+import { get, post } from "../../utilities.js";
 
 const Skeleton = (props) => {
   if (!props.userId) {
     return <div>Log in before playing</div>;
   }
+  const [userName, setName] = useState("");
+
+  useEffect(() => {
+    get("/api/whoami").then((user) => {
+      setName(user.username);
+    });
+  }, [userName]);
+
   return (
     <div className="center-div">
       {" "}
       <h1>
-        Hello <span className="gradient-text">{props.userName}</span>, let's play UnIson
+        Hello <span className="gradient-text">{userName}</span>, let's play UnIson
       </h1>
       <CreateLobby userName={props.userName} />
       <JoinLobby userName={props.userName} />

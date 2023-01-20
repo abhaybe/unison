@@ -20,7 +20,7 @@ import { get, post } from "../utilities";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
-  const [userName, setName] = useState(undefined);
+  const [userName, setName] = useState("");
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
@@ -30,7 +30,7 @@ const App = () => {
         setName(user.username);
       }
     });
-  }, []);
+  });
 
   const handleLogin = (credentialResponse) => {
     const userToken = credentialResponse.credential;

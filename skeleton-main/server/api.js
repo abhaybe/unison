@@ -47,6 +47,12 @@ router.get("/scores", (req, res) => {
     .then((messages) => res.send(messages));
 });
 
+router.post("/username", (req, res) => {
+  User.updateOne({ _id: req.body.userId }, { $set: { username: req.body.username } }).then(() => {
+    console.log(req.body);
+  });
+});
+
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
