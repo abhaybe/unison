@@ -18,7 +18,7 @@ const JoinLobby = (props) => {
   // };
 
   return (
-    <div>
+    <div className="JoinLobby-center">
       <h3> Join a Lobby!</h3>
       <div>{/* <p>{props.userName}</p> */}</div>
       <div>

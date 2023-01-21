@@ -21,10 +21,10 @@ const Skeleton = (props) => {
   }, []);
 
   return (
-    <div className="center-div">
+    <div>
       {" "}
-      <h1>
-        Hello <span className="gradient-text">{userName}</span>, let's play UnIson
+      <h1 className="center-div">
+        Hello <span className="gradient-text">{userName}</span>, let's play U&Ison
       </h1>
       <CreateLobby userName={props.userName} />
       <JoinLobby userName={props.userName} />

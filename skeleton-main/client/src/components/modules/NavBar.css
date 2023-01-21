@@ -32,3 +32,9 @@
 .NavBar-link + .NavBar-link {
   margin-left: var(--m);
 }
+
+.NavBar-loginbutton {
+  position: absolute;
+  top: 16px;
+  right: 10px;
+}

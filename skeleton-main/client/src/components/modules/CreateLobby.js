@@ -18,7 +18,7 @@ const CreateLobby = (props) => {
   //   };
 
   return (
-    <div>
+    <div className="CreateLobby-center">
       <h3> Create a new lobby!</h3>
       <div>{/* <p> {props.userName}</p> */}</div>
       <div>

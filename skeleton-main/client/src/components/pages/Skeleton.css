@@ -10,8 +10,9 @@
 }
 
 .center-div {
-  width: 600px;
+  width: 800px;
   padding: 0px;
   margin: 400px;
   margin-top: 0px;
+  margin-bottom: 8px;
 }

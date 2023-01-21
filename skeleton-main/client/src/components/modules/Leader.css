@@ -1,0 +1,22 @@
+/* initialize the counter */
+body {
+  counter-reset: demoCounter;
+}
+
+/* increment the counter anywhere there's a div*/
+bob {
+  counter-increment: demoCounter;
+}
+
+/*display the value of the counter before the element*/
+bob::before {
+  content: counter(demoCounter) ". ";
+}
+
+bob {
+  font-size: 40px;
+}
+
+bob1 {
+  display: inline-block;
+}
