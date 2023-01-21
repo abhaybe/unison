@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 import "./JoinLobby.css";
 import { get, post } from "../../utilities";
 
 const JoinLobby = (props) => {
   const [value, setValue] = useState("");
+  const navigate = useNavigate();
 
   // called whenever the user types in the new post input box
   const handleChange = (event) => {
@@ -24,11 +25,13 @@ const JoinLobby = (props) => {
     get("/api/lobby", { lobbyName: value }).then((lobby) => {
       console.log("this is", lobby);
       if (lobby.lobbyName === "") {
-        console.log("Doesn't exist");
+        console.log("Lobby doesn't exist");
       } else if (lobby.isPlaying === true) {
         console.log("game in progress");
       } else {
         post("/api/lobby", { lobbyName: value, userId: props.userId });
+        post("/api/userlobby", { userId: props.userId, lobby: value });
+        navigate("/lobby");
       }
     });
   };

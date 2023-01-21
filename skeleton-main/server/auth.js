@@ -36,6 +36,7 @@ function getOrCreateUser(user) {
       googleid: user.sub,
       wins: 0,
       username: goby.generate(["adj", "pre", "suf"]),
+      lobby: "",
     });
 
     return newUser.save();

@@ -22,8 +22,6 @@ const router = express.Router();
 //initialize socket
 const socketManager = require("./server-socket");
 
-const Users = require("./models/user");
-
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
 router.get("/whoami", (req, res) => {
@@ -66,16 +64,27 @@ router.post("/username", (req, res) => {
   });
 });
 
+router.post("/userlobby", (req, res) => {
+  User.updateOne({ _id: req.body.userId }, { $set: { lobby: req.body.lobby } }).then(() => {
+    console.log(req.body);
+  });
+});
+
 router.post("/lobby", (req, res) => {
-  if (Lobby.find({ $and: [{ lobbyName: req.body.lobbyName }, { isPlaying: false }] }).count() = 1) {
+  console.log("hullo");
+  if (
+    Lobby.find({ $and: [{ lobbyName: req.body.lobbyName }, { isPlaying: false }] }).count() === 1
+  ) {
+    console.log("hello");
     Lobby.updateOne({ $push: { userIds: req.body.userId } });
   } else {
+    console.log("nooooo");
     const newLobby = new Lobby({
       lobbyName: req.body.lobbyName,
       userIds: [req.body.userId],
       isPlaying: false,
     });
-    newLobby.save();
+    return newLobby.save();
 
     // socket initiaition here maybe?
   }
@@ -83,12 +92,15 @@ router.post("/lobby", (req, res) => {
 
 router.get("/lobby", (req, res) => {
   console.log(req.query.lobbyName);
-Lobby.findOne({lobbyName:req.query.lobbyName }).then((lobby)=>{ 
-  console.log(lobby)
-  if(!lobby){ res.send({lobbyName:""})}
-  else{res.send(lobby)}})
-
-})
+  Lobby.findOne({ lobbyName: req.query.lobbyName }).then((lobby) => {
+    console.log(lobby);
+    if (!lobby) {
+      res.send({ lobbyName: "" });
+    } else {
+      res.send(lobby);
+    }
+  });
+});
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
