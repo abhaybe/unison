@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
 import "./JoinLobby.css";
+import { get, post } from "../../utilities";
 
 const JoinLobby = (props) => {
   const [value, setValue] = useState("");
@@ -11,12 +12,26 @@ const JoinLobby = (props) => {
   };
 
   // called when the user hits "Submit" for a new post
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   props.onSubmit && props.onSubmit(value);
-  //   setValue("");
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(value);
+    setValue("");
+  };
 
+  const onSubmit = (value) => {
+    console.log("nope", props.userId);
+    // post("/api/lobby", { lobbyName: value, userId: props.userId });
+    get("/api/lobby", { lobbyName: value }).then((lobby) => {
+      console.log("this is", lobby);
+      if (lobby.lobbyName === "") {
+        console.log("Doesn't exist");
+      } else if (lobby.isPlaying === true) {
+        console.log("game in progress");
+      } else {
+        post("/api/lobby", { lobbyName: value, userId: props.userId });
+      }
+    });
+  };
   return (
     <div className="JoinLobby-center">
       <h3> Join a Lobby!</h3>
@@ -29,7 +44,7 @@ const JoinLobby = (props) => {
           type="submit"
           className="NewPostInput-button u-pointer"
           value="Submit"
-          //   onClick={handleSubmit}
+          onClick={handleSubmit}
         >
           Submit
         </button>

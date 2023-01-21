@@ -11,14 +11,20 @@ const Skeleton = (props) => {
     return <div>Log in before playing</div>;
   }
   const [userName, setName] = useState("");
+  const [userId, setId] = useState(0);
 
   useEffect(() => {
-    get("/api/getuser", { userId: props.userId }).then((user) => {
-      setName(user.username);
-      console.log(props.userId);
-      console.log("hi", user);
-    });
-  }, []);
+    get("/api/getuser", { userId: props.userId })
+      .then((user) => {
+        setName(user.username);
+        setId(user._id);
+        console.log("hello two", user._id);
+        console.log("hi", user);
+      })
+      .then(() => {
+        console.log("hello two", userId);
+      });
+  });
 
   return (
     <div>
@@ -26,8 +32,8 @@ const Skeleton = (props) => {
       <h1 className="center-div">
         Hello <span className="gradient-text">{userName}</span>, let's play U&Ison
       </h1>
-      <CreateLobby userName={props.userName} />
-      <JoinLobby userName={props.userName} />
+      <CreateLobby userId={userId} />
+      <JoinLobby userId={userId} />
     </div>
   );
 };

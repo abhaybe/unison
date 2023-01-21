@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const LobbySchema = new mongoose.Schema({
   lobbyName: String,
-  userNames: [String],
+  userIds: [String],
+  isPlaying: Boolean,
 });
 
 // compile model from schema

@@ -11,6 +11,7 @@ const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
+const Lobby = require("./models/lobby");
 
 // import authentication library
 const auth = require("./auth");
@@ -34,19 +35,23 @@ router.get("/whoami", (req, res) => {
   res.send(req.user);
 });
 
+router.post("/initsocket", (req, res) => {
+  // do nothing if user not logged in
+  if (req.user)
+    socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
+  res.send({});
+});
+
+// |------------------------------|
+// | write your API methods below!|
+// |------------------------------|
+
 router.get("/getuser", (req, res) => {
   if (req.user) {
     User.findOne({ _id: req.query.userId }).then((user) => {
       res.send(user);
     });
   }
-});
-
-router.post("/initsocket", (req, res) => {
-  // do nothing if user not logged in
-  if (req.user)
-    socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
-  res.send({});
 });
 
 router.get("/scores", (req, res) => {
@@ -61,10 +66,29 @@ router.post("/username", (req, res) => {
   });
 });
 
-// |------------------------------|
-// | write your API methods below!|
-// |------------------------------|
+router.post("/lobby", (req, res) => {
+  if (Lobby.find({ $and: [{ lobbyName: req.body.lobbyName }, { isPlaying: false }] }).count() = 1) {
+    Lobby.updateOne({ $push: { userIds: req.body.userId } });
+  } else {
+    const newLobby = new Lobby({
+      lobbyName: req.body.lobbyName,
+      userIds: [req.body.userId],
+      isPlaying: false,
+    });
+    newLobby.save();
 
+    // socket initiaition here maybe?
+  }
+});
+
+router.get("/lobby", (req, res) => {
+  console.log(req.query.lobbyName);
+Lobby.findOne({lobbyName:req.query.lobbyName }).then((lobby)=>{ 
+  console.log(lobby)
+  if(!lobby){ res.send({lobbyName:""})}
+  else{res.send(lobby)}})
+
+})
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
