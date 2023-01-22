@@ -1,0 +1,18 @@
+.gradient-text {
+  background-color: #f3ec78;
+  background-image: linear-gradient(45deg, #f3ec78, #af4261);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.center-div {
+  width: 800px;
+  padding: 0px;
+  margin: auto;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 8px;
+}

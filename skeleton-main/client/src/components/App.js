@@ -8,7 +8,7 @@ import NavBar from "./modules/NavBar.js";
 import Profile from "./pages/Profile.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Lobby from "./pages/Lobby.js";
-import Game from "./pages/Game.js"
+import Game from "./pages/Game.js";
 
 import "../utilities.css";
 
@@ -56,7 +56,7 @@ const App = () => {
         <NotFound default />
         <Profile path="/profile" userId={userId} />
         <Leaderboard path="/leaderboard" />
-        <Lobby path="/lobby" />
+        <Lobby path="/lobby" userId={userId} userName={userName} />
         <Game path="/game" />
       </Router>
     </>
