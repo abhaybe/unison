@@ -8,7 +8,6 @@ import NavBar from "./modules/NavBar.js";
 import Profile from "./pages/Profile.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Lobby from "./pages/Lobby.js";
-import Game from "./pages/Game.js";
 
 import "../utilities.css";
 
@@ -26,7 +25,7 @@ const App = () => {
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
-        // they are registered in the database, and currently logged in.
+        // they are registed in the database, and currently logged in.
         setUserId(user._id);
         setName(user.username);
       }
@@ -52,12 +51,11 @@ const App = () => {
     <>
       <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
       <Router>
-        <Skeleton path="/" userId={userId} userName={userName} />
+        <Skeleton path="/" userId={userId} />
         <NotFound default />
         <Profile path="/profile" userId={userId} />
         <Leaderboard path="/leaderboard" />
-        <Lobby path="/lobby" userId={userId} userName={userName} />
-        <Game path="/game" />
+        <Lobby path="/lobby" />
       </Router>
     </>
   );
