@@ -71,23 +71,35 @@ router.post("/userlobby", (req, res) => {
 });
 
 router.post("/lobby", (req, res) => {
-  console.log("hullo");
-  if (
-    Lobby.find({ $and: [{ lobbyName: req.body.lobbyName }, { isPlaying: false }] }).count() === 1
-  ) {
-    console.log("hello");
-    Lobby.updateOne({ $push: { userIds: req.body.userId } });
-  } else {
-    console.log("nooooo");
-    const newLobby = new Lobby({
-      lobbyName: req.body.lobbyName,
-      userIds: [req.body.userId],
-      isPlaying: false,
-    });
-    return newLobby.save();
+  // console.log("hullo", req.body.lobbyName);
+  // Lobby.find({ lobbyName: req.body.lobbyName }).then((lobby) => {
+  //   console.log(lobby);
+  // });
 
-    // socket initiaition here maybe?
-  }
+  Lobby.findOne({
+    $and: [{ lobbyName: req.body.lobbyName }, { isPlaying: false }],
+  }).then((lobby) => {
+    if (lobby) {
+      console.log("hello", req.body.userId);
+      Lobby.updateOne(
+        {
+          $and: [{ lobbyName: req.body.lobbyName }, { isPlaying: false }],
+        },
+        { $push: { userIds: req.body.userId } }
+        // $push: { userIds: req.body.userId }
+      ).then(console.log("no sir nope"));
+    } else {
+      console.log("nooooo");
+      const newLobby = new Lobby({
+        lobbyName: req.body.lobbyName,
+        userIds: [req.body.userId],
+        isPlaying: false,
+      });
+      return newLobby.save();
+
+      // socket initiaition here maybe?
+    }
+  });
 });
 
 router.get("/lobby", (req, res) => {
