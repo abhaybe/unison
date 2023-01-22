@@ -11,7 +11,8 @@ const NewName = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(value);
+    onSubmit && onSubmit(value);
+    location.reload();
     setValue("");
   };
 
