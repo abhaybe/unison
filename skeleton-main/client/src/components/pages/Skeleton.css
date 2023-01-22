@@ -12,7 +12,8 @@
 .center-div {
   width: 800px;
   padding: 0px;
-  margin: 400px;
+  margin: auto;
+  text-align: center;
   margin-top: 0px;
   margin-bottom: 8px;
 }
