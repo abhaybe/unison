@@ -3,9 +3,9 @@ import "./Leader.css";
 
 const Leader = (props) => {
   return (
-    <body>
+    <>
       {props.user.username} {"-"} {props.user.wins}
-    </body>
+    </>
   );
 };
 

@@ -4,19 +4,19 @@ body {
 }
 
 /* increment the counter anywhere there's a div*/
-bob {
+label {
   counter-increment: demoCounter;
 }
 
 /*display the value of the counter before the element*/
-bob::before {
+label::before {
   content: counter(demoCounter) ". ";
 }
 
-bob {
+label {
   font-size: 40px;
 }
 
-bob1 {
+.Leaderboard-Center {
   display: inline-block;
 }

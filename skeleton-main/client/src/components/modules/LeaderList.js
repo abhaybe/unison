@@ -4,12 +4,12 @@ import Leaderboard from "../pages/Leaderboard";
 import "./Leader.css";
 const LeaderList = (props) => {
   return props.users.map((oneuser, i) => (
-    <div>
-      <bob>
-        <bob1>
-          <Leader key={i} user={oneuser} />
-        </bob1>
-      </bob>
+    <div key={i}>
+      <label>
+        <span className="Leaderboard-Center">
+          <Leader user={oneuser} />
+        </span>
+      </label>
     </div>
   ));
 };

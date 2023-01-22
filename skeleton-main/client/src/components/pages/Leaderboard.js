@@ -16,18 +16,16 @@ const Leaderboard = () => {
   return (
     <div className="center-div">
       <h1 className="center-title">Global Leaderboard</h1>
-      <body>
-        <table class="content-table">
-          <tbody>
-            <tr>
-              <td>
-                {" "}
-                <LeaderList users={Leaders} />{" "}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </body>
+      <table className="content-table">
+        <tbody>
+          <tr>
+            <td>
+              {" "}
+              <LeaderList users={Leaders} />{" "}
+            </td>
+          </tr>
+        </tbody>
+      </table>
       {/* <table className="styled-table">
         <tbody>
           <tr className="active-row">
