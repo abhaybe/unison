@@ -1,0 +1,22 @@
+.square {
+    background: #fff;
+    /* border-style: solid #999; */
+    /* border-right: 1px solid #999; */
+    /* border-top: 1px solid #999; */
+    height: 34px;
+    padding: 0;
+    width: 34px;
+    /* margin-bottom: -1px;
+    margin-left: -1px; */
+  }
+  
+.square:focus {
+outline: none;
+}
+
+.row {
+display : flex
+}
+
+.board{
+}
