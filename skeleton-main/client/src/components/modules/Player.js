@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Player.css";
+// import "./Player.css";
 
 const Player = (props) => {
   return <>{props.user}</>;

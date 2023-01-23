@@ -104,7 +104,7 @@ router.post("/lobby", (req, res) => {
 
 router.get("/lobby", (req, res) => {
   Lobby.findOne({ lobbyName: req.query.lobbyName }).then((lobby) => {
-    console.log(lobby);
+    console.log("hello", lobby);
     if (!lobby) {
       res.send({ lobbyName: "" });
     } else {

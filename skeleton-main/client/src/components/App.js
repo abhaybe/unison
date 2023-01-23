@@ -30,7 +30,7 @@ const App = () => {
         setName(user.username);
       }
     });
-  });
+  }, []);
 
   const handleLogin = (credentialResponse) => {
     const userToken = credentialResponse.credential;
@@ -55,7 +55,7 @@ const App = () => {
         <NotFound default />
         <Profile path="/profile" userId={userId} />
         <Leaderboard path="/leaderboard" />
-        <Lobby path="/lobby" />
+        <Lobby path="/lobby" userId={userId} />
       </Router>
     </>
   );

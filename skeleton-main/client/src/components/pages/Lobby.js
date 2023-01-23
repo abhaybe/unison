@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "@reach/router";
 import { get, post } from "../../utilities.js";
+import PlayerList from "../modules/PlayerList";
 
 const Lobby = (props) => {
   if (!props.userId) {
@@ -13,7 +14,7 @@ const Lobby = (props) => {
   const [userId, setId] = useState(0);
   const [userLobby, setLobby] = useState("");
   const [userWins, setWins] = useState(0);
-  const [Lobbyinfo, setLobbyinfo] = useState();
+  const [Lobbyinfo, setLobbyinfo] = useState({ userIds: ["hello", "hi"] });
 
   // useEffect(() => {
   //   get("/api/getlobby", { lobbyId: props.lobbyId })
@@ -28,29 +29,50 @@ const Lobby = (props) => {
   // });
 
   useEffect(() => {
-    get("/api/getuser", { userId: props.userId })
-      .then((user) => {
-        setName(user.username);
-        setId(user._id);
-        setLobby(user.lobby);
-        setWins(user.wins);
-      })
-      .then(() => {});
-  });
-  console.log({ userLobby }.userLobby);
-
-  useEffect(() => {
-    get("/api/lobby", { lobbyName: userLobby }).then((lobby) => {
-      setLobbyinfo(lobby);
+    get("/api/getuser", { userId: props.userId }).then((user) => {
+      setName(user.username);
+      setId(user._id);
+      setLobby(user.lobby);
+      console.log(user.lobby);
+      console.log({ userLobby }.userLobby);
+      setWins(user.wins);
+      get("/api/lobby", { lobbyName: user.lobby })
+        .then((lobby) => {
+          setLobbyinfo(lobby);
+        })
+        .then(() => {
+          console.log("done", Lobbyinfo);
+        });
     });
-  });
+  }, []);
 
+  //   if ({ userLobby }.userLobby !== "") {
   return (
-    <>
+    <div>
       {" "}
+      <h1 className="center-div">
+        Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
+      </h1>
+      <h1 className="center-div">
+        You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
+      </h1>
       <PlayerList playerlist={Lobbyinfo} />
-    </>
+    </div>
   );
+  //   }
+  //   } else {
+  //     return (
+  //       <div>
+  //         {" "}
+  //         <h1 className="center-div">
+  //           Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
+  //         </h1>
+  //         <h1 className="center-div">
+  //           You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
+  //         </h1>
+  //       </div>
+  //     );
+  //   }
 };
 
 export default Lobby;
