@@ -57,6 +57,12 @@ const Lobby = (props) => {
         You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
       </h1>
       <PlayerList playerlist={Lobbyinfo} />
+      <Link to="/game">
+        <button>Start Game</button>
+      </Link>
+      <Link to="/">
+        <button>Leave Game</button>
+      </Link>
     </div>
   );
   //   }

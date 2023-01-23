@@ -27,40 +27,38 @@ const Profile = (props) => {
       });
   });
   return (
-    <body>
-      <div class="card-container">
-        <span class="pro">
-          <i class="message fas fa-envelope"></i>
-        </span>
-        <div className="m-b-25">
-          <img
-            decoding="async"
-            className="round img-radius"
-            src="https://weblab.mit.edu/public/img/logo.svg"
-            alt="user"
-          />
-        </div>
+    <div className="card-container">
+      <span className="pro">
+        <i className="message fas fa-envelope"></i>
+      </span>
+      <div className="m-b-25">
+        <img
+          decoding="async"
+          className="round img-radius"
+          src="https://weblab.mit.edu/public/img/logo.svg"
+          alt="user"
+        />
+      </div>
 
-        <h2>{userName}</h2>
-        <p>
-          <NewName userId={props.userId} />
-        </p>
-        <hr></hr>
-        <div className="buttons">
-          <div className="skills">
-            <h1 className="MainContainer-center">Statistics</h1>
-            <ul>
-              <li>Wins: {userWins}</li>
-              <li>Games Played:</li>
-              <li>Ranking: </li>
-              <li>TBD</li>
-              <li>TBD</li>
-              <li>TBD</li>
-            </ul>
-          </div>
+      <h2>{userName}</h2>
+      <div>
+        <NewName userId={props.userId} />
+      </div>
+      <hr></hr>
+      <div className="buttons">
+        <div className="skills">
+          <h1 className="MainContainer-center">Statistics</h1>
+          <ul>
+            <li>Wins: {userWins}</li>
+            <li>Games Played:</li>
+            <li>Ranking: </li>
+            <li>TBD</li>
+            <li>TBD</li>
+            <li>TBD</li>
+          </ul>
         </div>
       </div>
-    </body>
+    </div>
   );
 };
 
