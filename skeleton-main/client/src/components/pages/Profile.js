@@ -27,8 +27,47 @@ const Profile = (props) => {
       });
   });
   return (
-    <>
-      <div className="MainContainer-center">
+    <body>
+      <div class="card-container">
+        <span class="pro">
+          <i class="message fas fa-envelope"></i>
+        </span>
+        <div className="m-b-25">
+          <img
+            decoding="async"
+            className="round img-radius"
+            src="https://weblab.mit.edu/public/img/logo.svg"
+            alt="user"
+          />
+        </div>
+
+        <h2>{userName}</h2>
+        <p>
+          <NewName userId={props.userId} />
+        </p>
+        <hr></hr>
+        <div className="buttons">
+          <div className="skills">
+            <h1 className="MainContainer-center">Statistics</h1>
+            <ul>
+              <li>Wins: {userWins}</li>
+              <li>Games Played:</li>
+              <li>Ranking: </li>
+              <li>TBD</li>
+              <li>TBD</li>
+              <li>TBD</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </body>
+  );
+};
+
+export default Profile;
+
+{
+  /* <div className="MainContainer-center">
         <p> This is your profile</p>
       </div>
       <div className="page-content page-container" id="page-content">
@@ -85,9 +124,5 @@ const Profile = (props) => {
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
-};
-
-export default Profile;
+      </div> */
+}
