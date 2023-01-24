@@ -44,13 +44,15 @@ const Skeleton = (props) => {
     );
   } else {
     return (
-      <div className="tab">
-        {" "}
-        <h1 className="center-div text-color">
-          Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
-        </h1>
-        <CreateLobby userId={userId} />
-        <JoinLobby userId={userId} />
+      <div className="backgroundanimation">
+        <div className="tab ">
+          {" "}
+          <h1 className="center-div text-color">
+            Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
+          </h1>
+          <CreateLobby userId={userId} />
+          <JoinLobby userId={userId} />
+        </div>
       </div>
     );
   }

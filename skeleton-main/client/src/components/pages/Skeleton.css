@@ -21,7 +21,7 @@
   color: white;
 }
 
-body {
+.backgroundanimation {
   background-image: url("https://64.media.tumblr.com/eacef95adbc3d7ee9c68a4f73e428ebc/tumblr_p5hneohDGk1uruo10o3_r1_500.gifv");
   -webkit-background-size: cover;
   -moz-background-size: cover;
