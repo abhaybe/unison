@@ -45,10 +45,13 @@ p {
   box-shadow: 0px 10px 20px -10px rgb(0 0 0 / 75%);
   color: #000000;
   padding-top: 30px;
-  position: relative;
-  width: 450px;
+  position: absolute;
+  top: 10vh;
+  left: 35vw;
+  width: 30vw;
   max-width: 100%;
   text-align: center;
+  z-index: -1;
 }
 
 .card-container .pro {

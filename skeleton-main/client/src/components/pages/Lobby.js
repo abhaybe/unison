@@ -70,7 +70,7 @@ const Lobby = (props) => {
 
   if (userLobby !== "") {
     return (
-      <div>
+      <div className="move-down">
         <h1 className="center-div">
           Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
         </h1>
