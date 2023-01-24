@@ -59,13 +59,15 @@ router.get("/scores", (req, res) => {
 });
 
 router.post("/username", (req, res) => {
-  User.updateOne({ _id: req.body.userId }, { $set: { username: req.body.username } }).then(
-    () => {}
-  );
+  User.updateOne({ _id: req.body.userId }, { $set: { username: req.body.username } }).then(() => {
+    console.log("nnnn");
+  });
 });
 
 router.post("/userlobby", (req, res) => {
-  User.updateOne({ _id: req.body.userId }, { $set: { lobby: req.body.lobby } }).then(() => {});
+  User.updateOne({ _id: req.body.userId }, { $set: { lobby: req.body.lobby } }).then(() => {
+    console.log("ac");
+  });
 });
 
 router.post("/lobby", (req, res) => {
@@ -85,7 +87,7 @@ router.post("/lobby", (req, res) => {
           },
           { $push: { userIds: req.body.userId } }
           // $push: { userIds: req.body.userId }
-        );
+        ).then(() => console.log("hahhaha"));
       } else {
         const newLobby = new Lobby({
           lobbyName: req.body.lobbyName,
@@ -122,13 +124,15 @@ router.post("/leavelobby", (req, res) => {
         userIds: [req.body.userId],
       },
     }
-  ).then(() => {
-    Lobby.findOne({ lobbyName: req.body.lobbyName }).then((lobby) => {
-      if (lobby.userIds.length === 0) {
-        Lobby.deleteOne({ lobbyName: req.body.lobbyName }).then();
-      }
-    });
-  });
+  )
+    .then(() => {
+      Lobby.findOne({ lobbyName: req.body.lobbyName }).then((lobby) => {
+        if (lobby.userIds.length === 0) {
+          Lobby.deleteOne({ lobbyName: req.body.lobbyName }).then();
+        }
+      });
+    })
+    .then(() => console.log("saas"));
 });
 
 // anything else falls to this "not found" case

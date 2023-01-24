@@ -1,3 +1,4 @@
+require("dotenv").config();
 /*
 |--------------------------------------------------------------------------
 | server.js -- The core of your server
@@ -16,6 +17,8 @@
 // validator runs some basic checks to make sure you've set everything up correctly
 // this is a tool provided by staff, so you don't need to worry about it
 const validator = require("./validator");
+// const { SESSION_SECRET, MONGO_SRV } = require("../.env");
+const { config } = require("dotenv");
 validator.checkSetup();
 
 //import libraries needed for the webserver to work!
@@ -33,8 +36,7 @@ const socketManager = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL =
-  "mongodb+srv://unison:mV7C2uOhKlR4OijP@unison.zcwofrs.mongodb.net/?retryWrites=true&w=majority";
+const mongoConnectionURL = process.env.MONGO_SRV;
 // TODO change database name to the name you chose
 const databaseName = "unison";
 
@@ -59,7 +61,7 @@ app.use(express.json());
 app.use(
   session({
     // TODO: add a SESSION_SECRET string in your .env file, and replace the secret with process.env.SESSION_SECRET
-    secret: "session-secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })
@@ -97,9 +99,12 @@ app.use((err, req, res, next) => {
 });
 
 // hardcode port to 3000 for now
-const port = 3000;
+const port = process.env.PORT || 3000;
 const server = http.Server(app);
 socketManager.init(server);
+// app.listen(port, "0.0.0.0", () => {
+//   console.log(`hello ${port}`);
+// });
 
 server.listen(port, () => {
   console.log(`Server running on port: ${port}`);

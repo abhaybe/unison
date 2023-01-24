@@ -3,6 +3,10 @@
   font-family: "Inter", sans-serif;
 }
 
+.move-down {
+  padding-top: 20vh;
+}
+
 .content-table {
   border-collapse: collapse;
   margin: auto;

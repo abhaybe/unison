@@ -14,19 +14,20 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className="center-div">
-      <h1 className="center-title">Global Leaderboard</h1>
-      <table className="content-table">
-        <tbody>
-          <tr>
-            <td>
-              {" "}
-              <LeaderList users={Leaders} />{" "}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      {/* <table className="styled-table">
+    <div className="move-down">
+      <div className="center-div">
+        <h1 className="center-title">Global Leaderboard</h1>
+        <table className="content-table">
+          <tbody>
+            <tr>
+              <td>
+                {" "}
+                <LeaderList users={Leaders} />{" "}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {/* <table className="styled-table">
         <tbody>
           <tr className="active-row">
             <td>
@@ -36,6 +37,7 @@ const Leaderboard = () => {
           </tr>
         </tbody>
       </table> */}
+      </div>
     </div>
   );
 };

@@ -9,10 +9,16 @@
 }
 
 .center-div {
-  width: 800px;
+  width: 60vw;
   padding: 0px;
   margin: auto;
   text-align: center;
   margin-top: 0px;
   margin-bottom: 8px;
+}
+
+.move-down {
+  position: absolute;
+  top: -1vh;
+  left: 20vw;
 }
