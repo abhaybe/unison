@@ -17,6 +17,8 @@ require("dotenv").config();
 // validator runs some basic checks to make sure you've set everything up correctly
 // this is a tool provided by staff, so you don't need to worry about it
 const validator = require("./validator");
+// const { SESSION_SECRET, MONGO_SRV } = require("../.env");
+const { config } = require("../.env");
 validator.checkSetup();
 
 //import libraries needed for the webserver to work!
