@@ -5,30 +5,17 @@ import CreateLobby from "../modules/CreateLobby.js";
 import JoinLobby from "../modules/JoinLobby.js";
 import "./Skeleton.css";
 import { get, post } from "../../utilities.js";
+import { Link } from "@reach/router";
 
 const Skeleton = (props) => {
   if (!props.userId) {
     return <div>Log in before playing</div>;
   }
-  // if (!props.lobbyId) {
-  //   return <div>blh</div>;
-  // }
+
   const [userName, setName] = useState("");
   const [userId, setId] = useState(0);
   const [userLobby, setLobby] = useState("");
   const [userWins, setWins] = useState(0);
-
-  // useEffect(() => {
-  //   get("/api/getlobby", { lobbyId: props.lobbyId })
-  //     .then((user) => {
-  //       setLobby(user.lobby);
-  //       console.log("hello two", user._id);
-  //       console.log("hi", user);
-  //     })
-  //     .then(() => {
-  //       console.log("hello two", userId);
-  //     });
-  // });
 
   useEffect(() => {
     get("/api/getuser", { userId: props.userId })
@@ -52,6 +39,7 @@ const Skeleton = (props) => {
         <h1 className="center-div">
           You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
         </h1>
+        <Link to="/lobby">Go to lobby</Link>
       </div>
     );
   } else {
@@ -60,9 +48,6 @@ const Skeleton = (props) => {
         {" "}
         <h1 className="center-div">
           Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
-        </h1>
-        <h1 className="center-div">
-          You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
         </h1>
         <CreateLobby userId={userId} />
         <JoinLobby userId={userId} />
