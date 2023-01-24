@@ -97,7 +97,7 @@ router.post("/lobby", (req, res) => {
         // socket initiaition here maybe?
       }
     })
-    .then();
+    .then(() => console.log("hahaha"));
 });
 
 router.get("/lobby", (req, res) => {
@@ -109,7 +109,7 @@ router.get("/lobby", (req, res) => {
         res.send(lobby);
       }
     })
-    .then();
+    .then(() => console.log("fix lobby?"));
 });
 
 router.post("/leavelobby", (req, res) => {
