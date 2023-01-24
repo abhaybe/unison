@@ -14,7 +14,7 @@ const Lobby = (props) => {
   const [userId, setId] = useState(0);
   const [userLobby, setLobby] = useState("");
   const [userWins, setWins] = useState(0);
-  const [Lobbyinfo, setLobbyinfo] = useState({ userIds: ["hello", "hi"] });
+  const [Lobbyinfo, setLobbyinfo] = useState({ userIds: [props.userId] });
 
   // useEffect(() => {
   //   get("/api/getlobby", { lobbyId: props.lobbyId })
