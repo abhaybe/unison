@@ -27,12 +27,18 @@ const NewName = (props) => {
   return (
     <>
       <div>
-        <input type="text" placeholder="Type new username" value={value} onChange={handleChange} />
+        <input
+          className="NewName-TextEntry focus"
+          type="text"
+          placeholder="Type new username"
+          value={value}
+          onChange={handleChange}
+        />
       </div>
       <div>
         <button
           type="submit"
-          className="NewPostInput-button u-pointer"
+          className="NewPostInput-button u-pointer NewName-Button hover"
           value="Submit"
           onClick={handleSubmit}
         >

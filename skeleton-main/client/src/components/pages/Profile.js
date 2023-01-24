@@ -35,7 +35,8 @@ const Profile = (props) => {
         <img
           decoding="async"
           className="round img-radius"
-          src="https://weblab.mit.edu/public/img/logo.svg"
+          // src="https://weblab.mit.edu/public/img/logo.svg"
+          src="https://web.mit.edu/graphicidentity/images/examples/tim-the-beaver-3.png"
           alt="user"
         />
       </div>
