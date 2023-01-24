@@ -38,12 +38,18 @@ const CreateLobby = (props) => {
       <h3> Create a Lobby!</h3>
       <div>{/* <p>{props.userName}</p> */}</div>
       <div>
-        <input type="text" placeholder="Game Code:" value={value} onChange={handleChange} />
+        <input
+          className="CreateLobby-TextEntry focus"
+          type="text"
+          placeholder="Game Code:"
+          value={value}
+          onChange={handleChange}
+        />
       </div>
       <div>
         <button
           type="submit"
-          className="NewPostInput-button u-pointer"
+          className="NewPostInput-button u-pointer CreateLobby-Button hover"
           value="Submit"
           onClick={handleSubmit}
         >
