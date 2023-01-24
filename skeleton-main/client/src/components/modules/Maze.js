@@ -34,7 +34,7 @@ function randomPath(x, y, visited, dir){
     } 
 }
 
-function createMaze(x=10, y=10){
+export function createMaze(x=10, y=10){
     let visited = Array.from(Array(x), () => Array(y).fill(false));
     let dir = Array.from(Array(x), () => Array(y).fill(false));
     let walls = Array.from(Array(2), () => Array.from(Array(x), () => Array(y).fill(true))); // first array is upper walls
@@ -56,21 +56,23 @@ function createMaze(x=10, y=10){
     return walls
 }
 
-
-
-
-
-const Maze = ({x, y}) => {
+export const Maze = ({x, y}) => {
     let walls = createMaze(x, y);
+    let thick = 1; 
 
-    const getRow = (y) => {
+    const getRow = (coord) => {
+        coord = y - 1 - coord
         let squares = Array(x);
         for (let i = 0; i < x; i++){
-            squares[i] = <div className="square" key={i}
-            style={{borderTop: walls[0][i][y] ? "1px solid #999" : "0px",
-                    borderRight: walls[1][i][y] ? "1px solid #999" : "0px"}} ></div>;
+            squares[i] = <div className="square" key={coord*x + i}
+            style={{borderTop: walls[0][i][coord] ? `${thick}px solid #999` : `${thick}px solid #fff`,
+                    // marginTop: (walls[0][i][coord]) ? "0px" : `${thick}px`,
+                    borderRight: walls[1][i][coord] ? `${thick}px solid #999` : `${thick}px solid #fff`,
+                    // marginRight: (walls[1][i][coord]) ? "0px" : `${thick}px`
+                    }} 
+                    ></div>;
         }
-        return <div className="row" key={y}>{squares}</div>
+        return <div className="row" key={coord}>{squares}</div>
     }
 
     let board = Array(y);
@@ -78,5 +80,3 @@ const Maze = ({x, y}) => {
     return <div className="board">{board}</div>
 
 }
-
-export default Maze;
