@@ -101,13 +101,15 @@ router.post("/lobby", (req, res) => {
 });
 
 router.get("/lobby", (req, res) => {
-  Lobby.findOne({ lobbyName: req.query.lobbyName }).then((lobby) => {
-    if (!lobby) {
-      res.send({ lobbyName: "" });
-    } else {
-      res.send(lobby);
-    }
-  });
+  Lobby.findOne({ lobbyName: req.query.lobbyName })
+    .then((lobby) => {
+      if (!lobby) {
+        res.send({ lobbyName: "" });
+      } else {
+        res.send(lobby);
+      }
+    })
+    .then();
 });
 
 router.post("/leavelobby", (req, res) => {
