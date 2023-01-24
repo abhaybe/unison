@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "@reach/router";
 import { get, post } from "../../utilities.js";
 import PlayerList from "../modules/PlayerList";
+import { useNavigate } from "@reach/router";
 
 const Lobby = (props) => {
   if (!props.userId) {
     return <div>Log in before playing</div>;
   }
+
   // if (!props.lobbyId) {
   //   return <div>blh</div>;
   // }
@@ -27,7 +29,7 @@ const Lobby = (props) => {
   //       console.log("hello two", userId);
   //     });
   // });
-
+  const navigate = useNavigate();
   useEffect(() => {
     get("/api/getuser", { userId: props.userId }).then((user) => {
       setName(user.username);
@@ -46,6 +48,23 @@ const Lobby = (props) => {
     });
   }, []);
 
+  const handleSubmit = (event) => {
+    console.log("button clicked");
+    event.preventDefault();
+    onSubmit && onSubmit();
+  };
+
+  const onSubmit = () => {
+    console.log("button clicked two");
+    const body = { userId: props.userId, lobbyName: userLobby };
+    console.log(body);
+    post("/api/leavelobby", body).then(() => {
+      console.log("api posted for leave lobby");
+    });
+
+    navigate("/");
+  };
+
   //   if ({ userLobby }.userLobby !== "") {
   return (
     <div>
@@ -61,7 +80,9 @@ const Lobby = (props) => {
         <button>Start Game</button>
       </Link>
       <Link to="/">
-        <button>Leave Game</button>
+        <button type="submit" onClick={handleSubmit}>
+          Leave Game
+        </button>
       </Link>
     </div>
   );

@@ -59,15 +59,13 @@ router.get("/scores", (req, res) => {
 });
 
 router.post("/username", (req, res) => {
-  User.updateOne({ _id: req.body.userId }, { $set: { username: req.body.username } }).then(() => {
-    console.log(req.body);
-  });
+  User.updateOne({ _id: req.body.userId }, { $set: { username: req.body.username } }).then(
+    () => {}
+  );
 });
 
 router.post("/userlobby", (req, res) => {
-  User.updateOne({ _id: req.body.userId }, { $set: { lobby: req.body.lobby } }).then(() => {
-    console.log(req.body);
-  });
+  User.updateOne({ _id: req.body.userId }, { $set: { lobby: req.body.lobby } }).then(() => {});
 });
 
 router.post("/lobby", (req, res) => {
@@ -78,33 +76,32 @@ router.post("/lobby", (req, res) => {
 
   Lobby.findOne({
     $and: [{ lobbyName: req.body.lobbyName }, { isPlaying: false }],
-  }).then((lobby) => {
-    if (lobby) {
-      console.log("hello", req.body.userId);
-      Lobby.updateOne(
-        {
-          $and: [{ lobbyName: req.body.lobbyName }, { isPlaying: false }],
-        },
-        { $push: { userIds: req.body.userId } }
-        // $push: { userIds: req.body.userId }
-      ).then(console.log("no sir nope"));
-    } else {
-      console.log("nooooo");
-      const newLobby = new Lobby({
-        lobbyName: req.body.lobbyName,
-        userIds: [req.body.userId],
-        isPlaying: false,
-      });
-      return newLobby.save();
+  })
+    .then((lobby) => {
+      if (lobby) {
+        Lobby.updateOne(
+          {
+            $and: [{ lobbyName: req.body.lobbyName }, { isPlaying: false }],
+          },
+          { $push: { userIds: req.body.userId } }
+          // $push: { userIds: req.body.userId }
+        );
+      } else {
+        const newLobby = new Lobby({
+          lobbyName: req.body.lobbyName,
+          userIds: [req.body.userId],
+          isPlaying: false,
+        });
+        return newLobby.save();
 
-      // socket initiaition here maybe?
-    }
-  });
+        // socket initiaition here maybe?
+      }
+    })
+    .then();
 });
 
 router.get("/lobby", (req, res) => {
   Lobby.findOne({ lobbyName: req.query.lobbyName }).then((lobby) => {
-    console.log("hello", lobby);
     if (!lobby) {
       res.send({ lobbyName: "" });
     } else {
@@ -112,6 +109,26 @@ router.get("/lobby", (req, res) => {
     }
   });
 });
+
+router.post("/leavelobby", (req, res) => {
+  User.updateOne({ _id: req.body.userId }, { $set: { lobby: "" } }).then();
+
+  Lobby.updateOne(
+    { lobbyName: req.body.lobbyName },
+    {
+      $pullAll: {
+        userIds: [req.body.userId],
+      },
+    }
+  ).then(() => {
+    Lobby.findOne({ lobbyName: req.body.lobbyName }).then((lobby) => {
+      if (lobby.userIds.length === 0) {
+        Lobby.deleteOne({ lobbyName: req.body.lobbyName }).then();
+      }
+    });
+  });
+});
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

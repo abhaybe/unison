@@ -5,7 +5,6 @@ import Player from "./Player";
 // import "./Player.css";
 
 const PlayerList = ({ playerlist }) => {
-  console.log("deez nuts", playerlist);
   return playerlist.userIds.map((oneuser, i) => (
     <div key={i}>
       <label>

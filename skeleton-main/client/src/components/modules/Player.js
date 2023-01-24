@@ -7,7 +7,6 @@ const Player = (props) => {
 
   useEffect(() => {
     get("/api/getuser", { userId: props.user }).then((userr) => {
-      console.log(userr);
       setName(userr.username);
     });
   });
