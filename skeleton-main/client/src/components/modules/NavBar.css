@@ -1,12 +1,14 @@
 .NavBar-container {
-  padding: var(--m) var(--m);
-  background: rgba(2, 0, 36, 0.75);
-  background: linear-gradient(
+  padding: var(--m) var(--l);
+  background: rgba(72, 5, 228, 0.5);
+  position: fixed;
+  width: 100vw;
+  /* background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(57, 109, 255, 1) 32%,
     rgb(0, 4, 255) 100%
-  );
+  ); */
 }
 
 .NavBar-title {

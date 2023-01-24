@@ -13,7 +13,7 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
   return (
     <nav className="NavBar-container">
       <div className="NavBar-title u-inlineBlock">
-        <Link to="/" className="NavBar-link">
+        <Link to="/" className="NavBar-link text-color">
           Unison
         </Link>
       </div>
