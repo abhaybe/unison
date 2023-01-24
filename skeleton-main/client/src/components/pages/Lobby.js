@@ -3,6 +3,7 @@ import { Link } from "@reach/router";
 import { get, post } from "../../utilities.js";
 import PlayerList from "../modules/PlayerList";
 import { useNavigate } from "@reach/router";
+import "./Lobby.css";
 
 const Lobby = (props) => {
   if (!props.userId) {
@@ -66,40 +67,38 @@ const Lobby = (props) => {
   };
 
   //   if ({ userLobby }.userLobby !== "") {
-  return (
-    <div>
-      {" "}
-      <h1 className="center-div">
-        Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
-      </h1>
-      <h1 className="center-div">
-        You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
-      </h1>
-      <PlayerList playerlist={Lobbyinfo} />
-      <Link to="/game">
-        <button>Start Game</button>
-      </Link>
-      <Link to="/">
+
+  if (userLobby !== "") {
+    return (
+      <div>
+        <h1 className="center-div">
+          Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
+        </h1>
+        <h1 className="center-div">
+          You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
+        </h1>
+        <PlayerList playerlist={Lobbyinfo} />
+        <Link to="/game">
+          <button>Start Game</button>
+        </Link>
         <button type="submit" onClick={handleSubmit}>
           Leave Game
         </button>
-      </Link>
-    </div>
-  );
-  //   }
-  //   } else {
-  //     return (
-  //       <div>
-  //         {" "}
-  //         <h1 className="center-div">
-  //           Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
-  //         </h1>
-  //         <h1 className="center-div">
-  //           You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
-  //         </h1>
-  //       </div>
-  //     );
-  //   }
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        {" "}
+        <h1 className="center-div">
+          Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
+        </h1>
+        <h1 className="center-div">
+          <Link to="/">You are not in a lobby; go back to home</Link>
+        </h1>
+      </div>
+    );
+  }
 };
 
 export default Lobby;
