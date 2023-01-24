@@ -6,9 +6,10 @@ const Game = () => {
 
     return (
         <div>
-            <Canvas/>
             Hello this is the game
-            <Maze x={10} y={10}/>
+            <Canvas/>
+            
+            {/* <Maze x={10} y={10}/> */}
         </div>
     );
 };
