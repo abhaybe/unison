@@ -99,12 +99,12 @@ app.use((err, req, res, next) => {
 });
 
 // hardcode port to 3000 for now
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const server = http.Server(app);
 socketManager.init(server);
-app.listen(port, "0.0.0.0", () => {
-  console.log(`hello ${port}`);
-});
+// app.listen(port, "0.0.0.0", () => {
+//   console.log(`hello ${port}`);
+// });
 
 server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
