@@ -20,3 +20,13 @@ label {
 .Leaderboard-Center {
   display: inline-block;
 }
+
+.leaderObject {
+  display: flex;
+  place-items: center;
+  background-color: lightyellow;
+  text-align: center;
+  flex: 0 1 200px;
+  border: 1px;
+  border-color: black;
+}

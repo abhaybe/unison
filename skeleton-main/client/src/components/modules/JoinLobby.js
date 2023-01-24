@@ -15,7 +15,7 @@ const JoinLobby = (props) => {
   // called when the user hits "Submit" for a new post
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(value);
+    onSubmit && onSubmit(value);
     setValue("");
   };
 

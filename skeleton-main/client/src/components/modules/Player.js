@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { get, post } from "../../utilities";
-// import "./Player.css";
+import "./Player.css";
 
 const Player = (props) => {
   const [userName, setName] = useState(props.user);
@@ -10,7 +10,7 @@ const Player = (props) => {
       setName(userr.username);
     });
   });
-  return <>{userName}</>;
+  return <div className="playerdiv">{userName}</div>;
 };
 
 export default Player;
