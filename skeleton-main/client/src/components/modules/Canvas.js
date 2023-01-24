@@ -78,6 +78,30 @@ class Canvas extends React.Component {
         
     }
 
+    canMove(){
+        let x = Math.floor(this.state.coordinates[0]/50);
+        let y = Math.floor((this.height - this.state.coordinates[1])/50);
+        let velocity = this.state.velocity;
+        let walls = this.walls;
+        if (velocity[1] == -1 && walls[0][x][y]){
+            let ywall = this.height - this.unit*(y+1)
+            if (this.state.coordinates[1] - ywall < 10) return false;
+        }
+        if (velocity[0] == 1 && walls[1][x][y]){
+            let xwall = this.unit*(x+1)
+            if (xwall - this.state.coordinates[0] < 10) return false;
+        }
+        if (velocity[1] == 1 && y-1 >=0 && walls[0][x][y-1]){
+            let ywall = this.height - this.unit*(y)
+            if (ywall - this.state.coordinates[1] < 10) return false;
+        }
+        if (velocity[0] == -1 && x-1 >=0 && walls[1][x-1][y]){
+            let xwall = this.unit*(x)
+            if (this.state.coordinates[0] - xwall < 10) return false;
+        }
+        return true;
+    }
+
     animate(time){
         // this.setState(prev=>({"velocity": [0, 100]}))
         // console.log(this.state.velocity)
@@ -86,13 +110,16 @@ class Canvas extends React.Component {
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, this.width, this.height);
         ctx.beginPath()
-        ctx.arc(this.state.coordinates[0], this.state.coordinates[1], 20, 0, 2*Math.PI)
+        ctx.arc(this.state.coordinates[0], this.state.coordinates[1], 10, 0, 2*Math.PI)
         ctx.fill()
         this.draw_walls(ctx)
         // console.log(this.state.velocity)
         // this.setState(prev => ({"velocity" : this.state.velocity}))
-        this.setState(prev => ({"coordinates" : [prev.coordinates[0]+prev.velocity[0], prev.coordinates[1] + prev.velocity[1]],
+        if (this.canMove()){
+            this.setState(prev => ({"coordinates" : [prev.coordinates[0]+prev.velocity[0], prev.coordinates[1] + prev.velocity[1]],
                                 "velocity" : [prev.velocity[0], prev.velocity[1]]}))
+        }
+        
         requestAnimationFrame(this.animate);
     };
 
