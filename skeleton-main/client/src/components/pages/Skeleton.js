@@ -9,7 +9,14 @@ import { Link } from "@reach/router";
 
 const Skeleton = (props) => {
   if (!props.userId) {
-    return <div>Log in before playing</div>;
+    return (
+      <div className="backgroundanimation">
+        <div className="tab">
+          {" "}
+          <h1 className="center-div text-color">Please log in to play U&Ison.</h1>
+        </div>
+      </div>
+    );
   }
 
   const [userName, setName] = useState("");
@@ -31,15 +38,19 @@ const Skeleton = (props) => {
 
   if ({ userLobby }.userLobby !== "") {
     return (
-      <div>
-        {" "}
-        <h1 className="center-div">
-          Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
-        </h1>
-        <h1 className="center-div">
-          You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
-        </h1>
-        <Link to="/lobby">Go to lobby</Link>
+      <div className="backgroundanimation">
+        <div className="tab">
+          {" "}
+          <h1 className="center-div">
+            Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
+          </h1>
+          <h1 className="center-div">
+            You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
+          </h1>
+          <div className="center-div color-text">
+            <Link to="/lobby">Go to lobby</Link>
+          </div>
+        </div>
       </div>
     );
   } else {

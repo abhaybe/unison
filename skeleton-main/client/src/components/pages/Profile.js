@@ -5,7 +5,11 @@ import { get, post } from "../../utilities.js";
 
 const Profile = (props) => {
   if (!props.userId) {
-    return <div className="NoLogin-container NoLogin-textcenter">Log in before playing</div>;
+    return (
+      <div className="NoLogin-container NoLogin-textcenter">
+        You must log in to view your profile.
+      </div>
+    );
   }
   useEffect(() => {
     console.log("helooooo", props.userId);

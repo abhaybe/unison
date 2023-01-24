@@ -1,5 +1,8 @@
 .NoLogin-container {
-  background-color: rgb(160, 34, 34);
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 10vh;
+  left: 40vw;
 }
 
 .NoLogin-textcenter {
