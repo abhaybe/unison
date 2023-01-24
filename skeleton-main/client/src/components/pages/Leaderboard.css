@@ -1,11 +1,11 @@
 * {
   /* Change your font family */
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .content-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: auto;
   font-size: 0.9em;
   min-width: 600px;
   border-radius: 5px 5px 0 0;
