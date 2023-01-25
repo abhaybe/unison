@@ -5,6 +5,8 @@ import { get, post } from "../../utilities";
 
 const JoinLobby = (props) => {
   const [value, setValue] = useState("");
+  const [popup, setPopup] = useState("hidden");
+
   const navigate = useNavigate();
 
   // called whenever the user types in the new post input box
@@ -26,6 +28,7 @@ const JoinLobby = (props) => {
       console.log("this is", lobby);
       if (lobby.lobbyName === "") {
         console.log("Lobby doesn't exist");
+        setPopup("visible");
       } else if (lobby.isPlaying === true) {
         console.log("game in progress");
       } else {
@@ -40,6 +43,9 @@ const JoinLobby = (props) => {
       <h3> Join a Lobby!</h3>
       <div>{/* <p>{props.userName}</p> */}</div>
       <div>
+        <div style={{ visibility: popup }} className="popup Duplicate-Lobby">
+          Lobby does not exist!
+        </div>
         <input
           className="JoinLobby-TextEntry focus"
           type="text"

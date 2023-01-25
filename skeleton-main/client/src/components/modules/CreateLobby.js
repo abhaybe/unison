@@ -5,6 +5,7 @@ import { get, post } from "../../utilities";
 
 const CreateLobby = (props) => {
   const [value, setValue] = useState("");
+  const [popup, setPopup] = useState("hidden");
   const navigate = useNavigate();
 
   // called whenever the user types in the new post input box
@@ -26,6 +27,7 @@ const CreateLobby = (props) => {
       console.log("this is", lobby);
       if (lobby.lobbyName !== "") {
         console.log("Lobby exists already");
+        setPopup("visible");
       } else {
         post("/api/lobby", { lobbyName: value, userId: props.userId });
         post("/api/userlobby", { userId: props.userId, lobby: value });
@@ -38,6 +40,9 @@ const CreateLobby = (props) => {
       <h3> Create a Lobby!</h3>
       <div>{/* <p>{props.userName}</p> */}</div>
       <div>
+        <div style={{ visibility: popup }} className="popup Duplicate-Lobby">
+          Lobby already exists! Please use a different lobby name.
+        </div>
         <input
           className="CreateLobby-TextEntry focus"
           type="text"
