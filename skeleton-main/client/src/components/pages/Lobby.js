@@ -102,6 +102,7 @@ const Lobby = (props) => {
       </div>
     );
   } else {
+    navigate("/lobby");
     return (
       <div>
         {" "}
