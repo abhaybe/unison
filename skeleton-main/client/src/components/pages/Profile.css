@@ -72,7 +72,7 @@ p {
   position: absolute;
   top: 10vh;
   left: 35vw;
-  width: 30vw;
+  width: 50vw;
   max-width: 100%;
   text-align: center;
   z-index: -1;
@@ -168,6 +168,7 @@ button.primary.ghost:hover {
   text-align: left;
   padding: 15px;
   margin-top: 10px;
+  width: 50vw;
   border-radius: 0 0px 20px 20px;
 }
 

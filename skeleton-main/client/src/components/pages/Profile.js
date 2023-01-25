@@ -50,18 +50,17 @@ const Profile = (props) => {
         <NewName userId={props.userId} />
       </div>
       <hr></hr>
-      <div className="buttons">
-        <div className="skills">
-          <h1 className="MainContainer-center">Statistics</h1>
-          <ul>
-            <li>Wins: {userWins}</li>
-            <li>Games Played:</li>
-            <li>Ranking: </li>
-            <li>TBD</li>
-            <li>TBD</li>
-            <li>TBD</li>
-          </ul>
-        </div>
+
+      <div className="skills">
+        <h1 className="MainContainer-center">Statistics</h1>
+        <ul>
+          <li>Wins: {userWins}</li>
+          <li>Games Played:</li>
+          <li>Ranking: </li>
+          <li>TBD</li>
+          <li>TBD</li>
+          <li>TBD</li>
+        </ul>
       </div>
     </div>
   );
