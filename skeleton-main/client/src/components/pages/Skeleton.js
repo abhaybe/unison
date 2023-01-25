@@ -38,7 +38,7 @@ const Skeleton = (props) => {
 
   if ({ userLobby }.userLobby !== "") {
     return (
-      <div className="backgroundanimation">
+      <div className="backgroundanimation text-color">
         <div className="tab">
           {" "}
           <h1 className="center-div">
@@ -48,7 +48,9 @@ const Skeleton = (props) => {
             You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
           </h1>
           <div className="center-div color-text">
-            <Link to="/lobby">Go to lobby</Link>
+            <button className="Skeleton-Button hover">
+              <Link to="/lobby">Go to Lobby</Link>
+            </button>
           </div>
         </div>
       </div>
