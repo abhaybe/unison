@@ -42,9 +42,9 @@ const Skeleton = (props) => {
         <div className="tab">
           {" "}
           <h1 className="center-div">
-            Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
+            Hello <span className="gradient-text text-color">{userName}</span>, let's play U&Ison!
           </h1>
-          <h1 className="center-div">
+          <h1 className="center-div text-color">
             You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
           </h1>
           <div className="center-div text-color">
