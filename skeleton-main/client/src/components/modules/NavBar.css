@@ -3,6 +3,7 @@
   background: rgba(72, 5, 228, 0.75);
   position: fixed;
   width: 100vw;
+  z-index: 100;
   /* background: linear-gradient(
     90deg,  
     rgba(2, 0, 36, 1) 0%,

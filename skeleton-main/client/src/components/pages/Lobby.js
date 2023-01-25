@@ -4,6 +4,7 @@ import { get, post } from "../../utilities.js";
 import PlayerList from "../modules/PlayerList";
 import { useNavigate } from "@reach/router";
 import "./Lobby.css";
+import url from "socket.io-client/lib/url.js";
 
 const Lobby = (props) => {
   if (!props.userId) {
@@ -71,19 +72,31 @@ const Lobby = (props) => {
   if (userLobby !== "") {
     return (
       <div className="move-down">
-        <h1 className="center-div">
-          Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
-        </h1>
-        <h1 className="center-div">
-          You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
-        </h1>
-        <PlayerList playerlist={Lobbyinfo} />
-        <Link to="/game">
-          <button>Start Game</button>
-        </Link>
-        <button type="submit" onClick={handleSubmit}>
-          Leave Game
-        </button>
+        <div className="buttons">
+          <Link to="/game">
+            <button className="buttonn hover">Start Game</button>
+          </Link>
+        </div>
+        <div className="buttonstwo">
+          <button className="buttonntwo hover" type="submit" onClick={handleSubmit}>
+            Leave Game
+          </button>
+        </div>
+
+        <img src="https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif" />
+        <div className="actual-stuff">
+          <div className="right-thing">
+            <h1 className="center-div">
+              Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
+            </h1>
+            <h1 className="center-div">
+              You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
+            </h1>
+          </div>
+          <div className="playerlist">
+            <PlayerList playerlist={Lobbyinfo} />
+          </div>
+        </div>
       </div>
     );
   } else {

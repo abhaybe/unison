@@ -15,10 +15,127 @@
   text-align: center;
   margin-top: 0px;
   margin-bottom: 8px;
+  color: black;
 }
 
 .move-down {
+  background-color: white;
+  /* background-image: url(https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif); */
+  background-repeat: no-repeat;
+  /* position: absolute;
+  top: 0vh;
+  left: 0vw; */
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  opacity: 0.8;
+  max-width: 100%;
+}
+
+.actual-stuff {
+  color: black;
   position: absolute;
-  top: -1vh;
-  left: 20vw;
+  top: 8vh;
+  left: 0vw;
+}
+
+img {
+  src: url(https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif);
+  position: absolute;
+  top: 8vh;
+  left: 15vw;
+  width: 20vw;
+  max-width: 100%;
+  z-index: -3;
+}
+
+.right-thing {
+  position: absolute;
+  width: 30vw;
+  height: 40vh;
+  top: 8vh;
+  left: 30vw;
+  z-index: -4;
+}
+
+.playerlist {
+  position: absolute;
+  top: 40vh;
+  left: 35vw;
+  width: 60vw;
+}
+
+.butonn {
+  margin: 16px;
+  display: block;
+  height: 16px;
+
+  /* outline: 0; */
+
+  width: 50px;
+  border: 20px;
+  cursor: pointer;
+
+  top: 50vh;
+  /* text-decoration: none; */
+
+  color: #000;
+  background: #fff;
+  /* line-height: 32px; */
+  border-radius: 10px;
+  padding: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, rgb(246, 84, 174) 0px 0px 0px 4px,
+    rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+  transition: all 0.2s;
+}
+
+.hover {
+  box-shadow: rgb(246, 84, 174) -2px -2px 0px 2px, rgb(255, 198, 0) 0px 0px 0px 4px,
+    rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+  transform: scale(1.01);
+}
+
+.butonntwo {
+  margin: 16px;
+  /* display: block; */
+  height: 16px;
+  position: aboslute;
+  left: 200vw;
+
+  /* outline: 0; */
+  min-width: 200px;
+  width: 80px;
+  height: 24px;
+  border: 20px;
+  cursor: pointer;
+  /* text-decoration: none; */
+
+  color: #000;
+  background: #fff;
+  line-height: 32px;
+  border-radius: 10px;
+  padding: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, rgb(246, 84, 174) 0px 0px 0px 4px,
+    rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+  transition: all 0.2s;
+}
+
+.buttons {
+  position: absolute;
+  width: 50vw;
+  height: 50vh;
+  left: 55vw;
+  top: 30vh;
+}
+
+.buttonstwo {
+  position: absolute;
+  width: 50vw;
+  height: 50vh;
+  left: 65vw;
+  top: 30vh;
 }
