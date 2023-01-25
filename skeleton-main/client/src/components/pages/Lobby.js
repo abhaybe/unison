@@ -71,7 +71,7 @@ const Lobby = (props) => {
 
   if (userLobby !== "") {
     return (
-      <div className="move-down">
+      <div className="move-down1">
         <div className="buttons">
           <Link to="/game">
             <button className="buttonn hover">Start Game</button>

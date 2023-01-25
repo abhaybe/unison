@@ -47,7 +47,7 @@ const Skeleton = (props) => {
           <h1 className="center-div">
             You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
           </h1>
-          <div className="center-div color-text">
+          <div className="center-div text-color">
             <button className="Skeleton-Button hover">
               <Link to="/lobby">Go to Lobby</Link>
             </button>
@@ -57,14 +57,16 @@ const Skeleton = (props) => {
     );
   } else {
     return (
-      <div className="backgroundanimation">
-        <div className="tab ">
-          {" "}
-          <h1 className="center-div text-color">
-            Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
-          </h1>
-          <CreateLobby userId={userId} />
-          <JoinLobby userId={userId} />
+      <div className="text-color">
+        <div className="backgroundanimation text-color">
+          <div className="tab text-color ">
+            {" "}
+            <h1 className="center-div text-color">
+              Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
+            </h1>
+            <CreateLobby userId={userId} />
+            <JoinLobby userId={userId} />
+          </div>
         </div>
       </div>
     );

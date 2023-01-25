@@ -15,10 +15,9 @@
   text-align: center;
   margin-top: 0px;
   margin-bottom: 8px;
-  color: black;
 }
 
-.move-down {
+.move-down1 {
   background-color: white;
   /* background-image: url(https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif); */
   background-repeat: no-repeat;
@@ -39,7 +38,7 @@
   left: 0vw;
 }
 
-img {
+.img {
   src: url(https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif);
   position: absolute;
   top: 8vh;
