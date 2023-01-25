@@ -82,14 +82,16 @@ const Lobby = (props) => {
             Leave Game
           </button>
         </div>
+        <div className="imagee">
+          <img src="https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif" />
+        </div>
 
-        <img src="https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif" />
         <div className="actual-stuff">
           <div className="right-thing">
-            <h1 className="center-div">
+            <h1 className="center-div color-textt">
               Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
             </h1>
-            <h1 className="center-div">
+            <h1 className="center-div color-textt">
               You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
             </h1>
           </div>

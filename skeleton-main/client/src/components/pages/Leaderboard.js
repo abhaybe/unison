@@ -15,7 +15,7 @@ const Leaderboard = () => {
 
   return (
     <div className="move-down bring-behind">
-      <div className="center-div">
+      <div className="center-div color-textx">
         <h1 className="center-title">Global Leaderboard</h1>
         <table className="content-table">
           <tbody>

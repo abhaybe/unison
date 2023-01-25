@@ -24,6 +24,10 @@
   font-weight: bold;
 }
 
+.color-textx {
+  color: black;
+}
+
 .content-table th,
 .content-table td {
   padding: 12px 15px;
