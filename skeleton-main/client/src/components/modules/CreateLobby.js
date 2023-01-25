@@ -40,7 +40,7 @@ const CreateLobby = (props) => {
       <h3> Create a Lobby!</h3>
       <div>{/* <p>{props.userName}</p> */}</div>
       <div>
-        <div style={{ visibility: popup }} className="popup Duplicate-Lobby">
+        <div style={{ visibility: popup }} className="popup Duplicate-Lobbytwo">
           Lobby already exists! Please use a different lobby name.
         </div>
         <input

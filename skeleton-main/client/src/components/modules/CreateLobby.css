@@ -118,9 +118,9 @@
   }
 }
 
-.Duplicate-Lobby {
+.Duplicate-Lobbytwo {
   position: absolute;
-  top: 70vh;
+  top: 80vh;
   left: 40vw;
   width: 20vw;
   height: 10vh;
@@ -135,7 +135,7 @@
   color: #fa0505;
   padding-top: 30px;
   position: absolute;
-  top: 10vh;
+  top: 90vh;
   left: 35vw;
   width: 30vw;
   max-width: 100%;
