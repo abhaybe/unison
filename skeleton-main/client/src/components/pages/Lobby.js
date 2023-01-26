@@ -8,7 +8,14 @@ import url from "socket.io-client/lib/url.js";
 
 const Lobby = (props) => {
   if (!props.userId) {
-    return <div>Log in before playing</div>;
+    return (
+      <div>
+        {" "}
+        <h1 className="center-div move-downagain">
+          <Link to="/">Please log in to play U&Ison.</Link>
+        </h1>
+      </div>
+    );
   }
 
   // if (!props.lobbyId) {
@@ -106,11 +113,8 @@ const Lobby = (props) => {
     return (
       <div>
         {" "}
-        <h1 className="center-div">
-          Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
-        </h1>
-        <h1 className="center-div">
-          <Link to="/">You are not in a lobby; go back to home</Link>
+        <h1 className="center-div move-downagain">
+          <Link to="/">You are not in a lobby; click to go back to home.</Link>
         </h1>
       </div>
     );
