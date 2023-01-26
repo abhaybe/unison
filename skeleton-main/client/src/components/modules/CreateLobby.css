@@ -7,6 +7,10 @@
   color: white;
 }
 
+.paddingmove {
+  padding-bottom: 10px;
+}
+
 .CreateLobby-TextEntry {
   padding: 5px 12px;
   font-size: 14px;

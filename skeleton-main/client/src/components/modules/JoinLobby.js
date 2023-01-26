@@ -40,7 +40,7 @@ const JoinLobby = (props) => {
   };
   return (
     <div className="JoinLobby-center text-color">
-      <h3> Join a Lobby!</h3>
+      <h3 className="paddingmove"> Join a Lobby!</h3>
       <div>{/* <p>{props.userName}</p> */}</div>
       <div>
         <div style={{ visibility: popup }} className="popup Duplicate-Lobby">

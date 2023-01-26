@@ -37,7 +37,7 @@ const CreateLobby = (props) => {
   };
   return (
     <div className="CreateLobby-center text-color">
-      <h3> Create a Lobby!</h3>
+      <h3 className="paddingmove"> Create a Lobby!</h3>
       <div>{/* <p>{props.userName}</p> */}</div>
       <div>
         <div style={{ visibility: popup }} className="popup Duplicate-Lobbytwo">

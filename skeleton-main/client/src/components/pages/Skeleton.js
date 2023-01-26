@@ -8,6 +8,9 @@ import { get, post } from "../../utilities.js";
 import { Link } from "@reach/router";
 
 const Skeleton = (props) => {
+  // <audio src="\Users\orion\Downloads\Jeremy Zucker & Chelsea Cutler - emily (Lyric Video).mp3">
+  //   <p>If you are reading this, it is because your browser does not support the audio element. </p>
+  // </audio>;
   if (!props.userId) {
     return (
       <div className="backgroundanimation">
