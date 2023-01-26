@@ -5,6 +5,7 @@ import PlayerList from "../modules/PlayerList";
 import { useNavigate } from "@reach/router";
 import "./Lobby.css";
 import url from "socket.io-client/lib/url.js";
+import { socket } from "../../client-socket.js";
 
 const Lobby = (props) => {
   if (!props.userId) {
@@ -47,6 +48,7 @@ const Lobby = (props) => {
       console.log(user.lobby);
       console.log({ userLobby }.userLobby);
       setWins(user.wins);
+
       get("/api/lobby", { lobbyName: user.lobby })
         .then((lobby) => {
           setLobbyinfo(lobby);

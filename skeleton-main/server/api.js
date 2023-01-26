@@ -87,7 +87,10 @@ router.post("/lobby", (req, res) => {
           },
           { $push: { userIds: req.body.userId } }
           // $push: { userIds: req.body.userId }
-        ).then(() => console.log("hahhaha"));
+        ).then(() => {
+          console.log("hahhaha");
+          socketManager.getIo().emit("lobbySocket", req.body.userId);
+        });
       } else {
         const newLobby = new Lobby({
           lobbyName: req.body.lobbyName,
@@ -99,7 +102,10 @@ router.post("/lobby", (req, res) => {
         // socket initiaition here maybe?
       }
     })
-    .then(() => console.log("hahaha"));
+    .then(() => {
+      console.log("hahaha");
+      socketManager.getIo().emit("lobbySocket", req.body.userId);
+    });
 });
 
 router.get("/lobby", (req, res) => {
