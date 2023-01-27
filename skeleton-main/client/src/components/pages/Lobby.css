@@ -43,11 +43,11 @@
 
 .imagee {
   /* src: url(https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif); */
-  position: absolute;
-  top: 8vh;
-  left: 15vw;
+  position: fixed;
+  top: 77vh;
+  left: 88vw;
   width: 20vw;
-  max-width: 100%;
+  max-width: 10%;
   z-index: -3;
 }
 img {
@@ -58,14 +58,14 @@ img {
   width: 30vw;
   height: 40vh;
   top: 8vh;
-  left: 30vw;
+  left: 20vw;
   z-index: -4;
 }
 
 .playerlist {
   position: absolute;
-  top: 40vh;
-  left: 35vw;
+  top: 30vh;
+  left: 33vw;
   width: 60vw;
 }
 
@@ -132,7 +132,7 @@ img {
   position: absolute;
   width: 50vw;
   height: 50vh;
-  left: 55vw;
+  left: 43vw;
   top: 30vh;
 }
 
@@ -140,7 +140,7 @@ img {
   position: absolute;
   width: 50vw;
   height: 50vh;
-  left: 65vw;
+  left: 51vw;
   top: 30vh;
 }
 
@@ -149,3 +149,9 @@ img {
   top: 25vh;
   left: 20vw;
 }
+
+/* .moveNameList {
+  position: absolute;
+  top: 33vh;
+  left: 35vw;
+} */

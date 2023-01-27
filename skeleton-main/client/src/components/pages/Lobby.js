@@ -6,6 +6,7 @@ import { useNavigate } from "@reach/router";
 import "./Lobby.css";
 import url from "socket.io-client/lib/url.js";
 import { socket } from "../../client-socket.js";
+import "../../utilities.css";
 
 const Lobby = (props) => {
   if (!props.userId) {
@@ -20,6 +21,8 @@ const Lobby = (props) => {
   }
 
   useEffect(() => {
+    navigate("/lobby");
+    navigate("/lobby");
     navigate("/lobby");
   }, [userLobby]);
 
@@ -122,7 +125,7 @@ const Lobby = (props) => {
 
   if (userLobby !== "") {
     return (
-      <div className="move-down1">
+      <div className="move-down1 ">
         <div className="buttons">
           <Link to="/game">
             <button className="buttonn hover">Start Game</button>
@@ -146,7 +149,7 @@ const Lobby = (props) => {
               You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
             </h1>
           </div>
-          <div className="playerlist">
+          <div className="playerlist moveNameList">
             <PlayerList playerlist={Lobbyinfo} />
           </div>
         </div>
