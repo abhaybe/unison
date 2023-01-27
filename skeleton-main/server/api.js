@@ -87,24 +87,28 @@ router.post("/lobby", (req, res) => {
           },
           { $push: { userIds: req.body.userId } }
           // $push: { userIds: req.body.userId }
-        ).then(() => {
-          console.log("hahhaha");
-          socketManager.getIo().emit("lobbySocket", req.body.userId);
-        });
+        )
+          .then(() => {
+            console.log("hahhaha");
+            socketManager.getIo().emit("lobbySocket", req.body.userId);
+          })
+          .then(() => console.log("thennn"));
       } else {
         const newLobby = new Lobby({
           lobbyName: req.body.lobbyName,
           userIds: [req.body.userId],
           isPlaying: false,
         });
-        return newLobby.save();
+        return newLobby.save().then(() => {
+          console.log("hahahahahha");
+          socketManager.getIo().emit("lobbySocket", req.body.userId);
+        });
 
         // socket initiaition here maybe?
       }
     })
     .then(() => {
       console.log("hahaha");
-      socketManager.getIo().emit("lobbySocket", req.body.userId);
     });
 });
 
@@ -135,6 +139,8 @@ router.post("/leavelobby", (req, res) => {
       Lobby.findOne({ lobbyName: req.body.lobbyName }).then((lobby) => {
         if (lobby.userIds.length === 0) {
           Lobby.deleteOne({ lobbyName: req.body.lobbyName }).then();
+        } else {
+          socketManager.getIo().emit("lobbyLeave", req.body.userId);
         }
       });
     })

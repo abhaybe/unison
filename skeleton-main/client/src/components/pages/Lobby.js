@@ -19,6 +19,10 @@ const Lobby = (props) => {
     );
   }
 
+  useEffect(() => {
+    navigate("/lobby");
+  }, [userLobby]);
+
   // if (!props.lobbyId) {
   //   return <div>blh</div>;
   // }
@@ -26,7 +30,7 @@ const Lobby = (props) => {
   const [userId, setId] = useState(0);
   const [userLobby, setLobby] = useState("");
   const [userWins, setWins] = useState(0);
-  const [Lobbyinfo, setLobbyinfo] = useState({ userIds: [props.userId] });
+  const [Lobbyinfo, setLobbyinfo] = useState([props.userId]);
 
   // useEffect(() => {
   //   get("/api/getlobby", { lobbyId: props.lobbyId })
@@ -51,12 +55,50 @@ const Lobby = (props) => {
 
       get("/api/lobby", { lobbyName: user.lobby })
         .then((lobby) => {
-          setLobbyinfo(lobby);
+          setLobbyinfo(lobby.userIds);
         })
         .then(() => {
           console.log("done", Lobbyinfo);
         });
     });
+  }, []);
+
+  useEffect(() => {
+    const callSocket = (data) => {
+      // console.log("please work", Lobbyinfo, String(data));
+      setLobbyinfo((oldInfo) => {
+        const arr = [...oldInfo, data];
+        console.log(" workkk", oldInfo, arr, data);
+        return arr;
+      });
+      // console.log(Lobbyinfo);
+      // setList(Array(new Set(userlist)));
+      // userlist = [...new Set(userlist)];
+      // setList((userlist) => new Set(userlist).add(data));
+      //   if (trimmed && !categories.includes(trimmed)) {
+      //     setCategories(prevState => prevState.concat(trimmed));
+      //   }
+      // };
+    };
+
+    const leaveSocket = (data) => {
+      // console.log("please work", Lobbyinfo, String(data));
+      setLobbyinfo((oldInfo) => {
+        const arr = oldInfo.map((shape) => {
+          if (shape !== data) {
+            return shape;
+          }
+          return "";
+        });
+        return arr;
+      });
+    };
+    socket.on("lobbySocket", callSocket);
+    socket.on("lobbyLeave", leaveSocket);
+    return () => {
+      socket.off("lobbySocket", callSocket);
+      socket.off("lobbyLeave", leaveSocket);
+    };
   }, []);
 
   const handleSubmit = (event) => {

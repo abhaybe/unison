@@ -9,7 +9,7 @@ const Player = (props) => {
     get("/api/getuser", { userId: props.user }).then((userr) => {
       setName(userr.username);
     });
-  });
+  }, [props.user]);
   return <div className="playerdiv">{userName}</div>;
 };
 
