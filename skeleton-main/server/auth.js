@@ -37,6 +37,7 @@ function getOrCreateUser(user) {
       wins: 0,
       username: goby.generate(["adj", "pre", "suf"]),
       lobby: "",
+      gamesPlayed: 0,
     });
 
     return newUser.save();

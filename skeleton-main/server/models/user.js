@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   wins: Number,
   username: String,
   lobby: String,
+  gamesPlayed: Number,
 });
 
 // compile model from schema

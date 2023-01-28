@@ -147,6 +147,12 @@ router.post("/leavelobby", (req, res) => {
     .then(() => console.log("saas"));
 });
 
+router.post("/incrementGamesPlayed", (req, res) => {
+  User.updateOne({ _id: req.body.userId }, { $inc: { gamesPlayed: 1 } }).then(() =>
+    console.log("gamesplayed incremented!")
+  );
+});
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

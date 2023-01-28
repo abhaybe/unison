@@ -121,15 +121,24 @@ const Lobby = (props) => {
     navigate("/");
   };
 
+  const onSubmitStart = () => {
+    const body = { userId: props.userId, lobbyName: userLobby };
+    console.log(body);
+    post("/api/incrementGamesPlayed", body).then(() => {
+      console.log("gamesPlayed");
+    });
+    navigate("/game");
+  };
+
   //   if ({ userLobby }.userLobby !== "") {
 
   if (userLobby !== "") {
     return (
       <div className="move-down1 ">
         <div className="buttons">
-          <Link to="/game">
-            <button className="buttonn hover">Start Game</button>
-          </Link>
+          <button className="buttonn hover" onClick={onSubmitStart}>
+            Start Game
+          </button>
         </div>
         <div className="buttonstwo">
           <button className="buttonntwo hover" type="submit" onClick={handleSubmit}>
