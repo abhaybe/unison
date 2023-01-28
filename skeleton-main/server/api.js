@@ -147,6 +147,12 @@ router.post("/leavelobby", (req, res) => {
     .then(() => console.log("saas"));
 });
 
+router.post("/setLobbyPlaying", (req, res) => {
+  Lobby.updateOne({ lobbyName: req.body.lobbyName }, { $set: { isPlaying: true } }).then(() =>
+    console.log("isPlaying set to true!!!")
+  );
+});
+
 router.post("/incrementGamesPlayed", (req, res) => {
   User.updateOne({ _id: req.body.userId }, { $inc: { gamesPlayed: 1 } }).then(() =>
     console.log("gamesplayed incremented!")

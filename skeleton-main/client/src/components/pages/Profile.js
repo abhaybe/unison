@@ -17,12 +17,14 @@ const Profile = (props) => {
   const [userName, setName] = useState("");
   const [userId, setId] = useState(0);
   const [userWins, setWins] = useState(0);
+  const [userGamesPlayed, setGamesPlayed] = useState(0);
   useEffect(() => {
     get("/api/getuser", { userId: props.userId })
       .then((user) => {
         setName(user.username);
         setId(user._id);
         setWins(user.wins);
+        setGamesPlayed(user.gamesPlayed);
         console.log("hello two", user._id);
         console.log("hi", user);
       })
@@ -55,7 +57,7 @@ const Profile = (props) => {
         <h1 className="MainContainer-center">Statistics</h1>
         <ul>
           <li>Wins: {userWins}</li>
-          <li>Games Played:</li>
+          <li>Games Played: {userGamesPlayed}</li>
           <li>Ranking: </li>
           <li>TBD</li>
           <li>TBD</li>

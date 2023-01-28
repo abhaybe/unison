@@ -8,6 +8,9 @@ const Game = () => {
       <Canvas />
       Hello this is the game
       {/* <Maze x={10} y={10}/> */}
+      <div>
+        <button>Start Game</button>
+      </div>
     </div>
   );
 };

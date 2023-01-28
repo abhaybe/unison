@@ -127,6 +127,9 @@ const Lobby = (props) => {
     post("/api/incrementGamesPlayed", body).then(() => {
       console.log("gamesPlayed");
     });
+    post("/api/setLobbyPlaying", body).then(() => {
+      console.log("isPlaying set to true");
+    });
     navigate("/game");
   };
 
