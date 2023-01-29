@@ -133,13 +133,18 @@ const Lobby = (props) => {
     navigate("/game");
   };
 
+  const onSubmitmake = () => {
+    onSubmitStart;
+    post("/api/gameStart", { lobbyName: userLobby });
+  };
+
   //   if ({ userLobby }.userLobby !== "") {
 
   if (userLobby !== "") {
     return (
       <div className="move-down1 ">
         <div className="buttons">
-          <button className="buttonn hover" onClick={onSubmitStart}>
+          <button className="buttonn hover" onClick={onSubmitmake}>
             Start Game
           </button>
         </div>

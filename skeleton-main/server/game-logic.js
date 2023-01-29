@@ -1,0 +1,4 @@
+const gameState = {
+  keyMaps: {},
+  players: {},
+};

@@ -159,6 +159,10 @@ router.post("/incrementGamesPlayed", (req, res) => {
   );
 });
 
+router.post("gameStart", (req, res) => {
+  socketManager.getIo().emit("gameStart", req.body.lobbyName);
+});
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
