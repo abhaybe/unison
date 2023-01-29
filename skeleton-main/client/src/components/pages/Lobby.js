@@ -20,12 +20,6 @@ const Lobby = (props) => {
     );
   }
 
-  useEffect(() => {
-    navigate("/lobby");
-    navigate("/lobby");
-    navigate("/lobby");
-  }, [userLobby]);
-
   // if (!props.lobbyId) {
   //   return <div>blh</div>;
   // }
@@ -34,6 +28,12 @@ const Lobby = (props) => {
   const [userLobby, setLobby] = useState("");
   const [userWins, setWins] = useState(0);
   const [Lobbyinfo, setLobbyinfo] = useState([props.userId]);
+
+  useEffect(() => {
+    navigate("/lobby");
+    navigate("/lobby");
+    navigate("/lobby");
+  }, [userLobby]);
 
   // useEffect(() => {
   //   get("/api/getlobby", { lobbyId: props.lobbyId })
