@@ -74,14 +74,6 @@ const Lobby = (props) => {
         console.log(" workkk", oldInfo, arr, data);
         return arr;
       });
-      // console.log(Lobbyinfo);
-      // setList(Array(new Set(userlist)));
-      // userlist = [...new Set(userlist)];
-      // setList((userlist) => new Set(userlist).add(data));
-      //   if (trimmed && !categories.includes(trimmed)) {
-      //     setCategories(prevState => prevState.concat(trimmed));
-      //   }
-      // };
     };
 
     const leaveSocket = (data) => {
@@ -121,8 +113,8 @@ const Lobby = (props) => {
     navigate("/");
   };
 
-  const onSubmitStart = () => {
-    const body = { userId: props.userId, lobbyName: userLobby };
+  const onSubmitStart = (lobbyt) => {
+    const body = { userId: props.userId, lobbyName: lobbyt };
     console.log(body);
     post("/api/incrementGamesPlayed", body).then(() => {
       console.log("gamesPlayed");
@@ -134,10 +126,21 @@ const Lobby = (props) => {
   };
 
   const onSubmitmake = () => {
-    onSubmitStart;
+    onSubmitStart(userLobby);
     post("/api/gameStart", { lobbyName: userLobby });
   };
 
+  useEffect(() => {
+    const onApiCall = (data) => {
+      onSubmitStart(data);
+    };
+
+    socket.on("gameStart", onApiCall);
+
+    return () => {
+      socket.off("gameStart", onApiCall);
+    };
+  });
   //   if ({ userLobby }.userLobby !== "") {
 
   if (userLobby !== "") {
