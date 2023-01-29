@@ -56,11 +56,12 @@ class Canvas extends React.Component {
         break;
       case "ArrowUp":
         event.preventDefault();
-        const z = this.state.coordinates + [0.00002, 0];
-        console.log(this.state.coordinates);
+        this.setState({ velocity: [0, -1] })
+        // const z = this.state.coordinates + [0.00002, 0];
+        // console.log(this.state.coordinates);
 
-        this.setState({ coordinates: z });
-        console.log(this.state.coordinates);
+        // this.setState({ coordinates: z });
+        // console.log(this.state.coordinates);
         break;
       default:
         console.log(`Unknown key: ${event.key}`);
