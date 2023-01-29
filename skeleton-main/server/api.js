@@ -159,7 +159,7 @@ router.post("/incrementGamesPlayed", (req, res) => {
   );
 });
 
-router.post("gameStart", (req, res) => {
+router.post("/gameStart", (req, res) => {
   socketManager.getIo().emit("gameStart", req.body.lobbyName);
 });
 
