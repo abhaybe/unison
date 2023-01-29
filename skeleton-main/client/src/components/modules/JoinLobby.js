@@ -6,6 +6,7 @@ import { get, post } from "../../utilities";
 const JoinLobby = (props) => {
   const [value, setValue] = useState("");
   const [popup, setPopup] = useState("hidden");
+  const [popupStart, setPopupStart] = useState("hidden");
 
   const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ const JoinLobby = (props) => {
         setPopup("visible");
       } else if (lobby.isPlaying === true) {
         console.log("game in progress");
+        setPopupStart("visible");
       } else {
         post("/api/lobby", { lobbyName: value, userId: props.userId });
         post("/api/userlobby", { userId: props.userId, lobby: value });
@@ -45,6 +47,9 @@ const JoinLobby = (props) => {
       <div>
         <div style={{ visibility: popup }} className="popup Duplicate-Lobby">
           Lobby does not exist!
+        </div>
+        <div style={{ visibility: popupStart }} className="popup GameStart-Lobby">
+          Game is already in progress!
         </div>
         <input
           className="JoinLobby-TextEntry focus"

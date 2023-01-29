@@ -68,6 +68,17 @@
   vertical-align: middle;
 }
 
+.GameStart-Lobby {
+  position: absolute;
+  top: 90vh;
+  left: 40vw;
+  width: 20vw;
+  height: 5vh;
+  background: rgba(114, 89, 255, 0.2);
+  text-align: center;
+  vertical-align: middle;
+}
+
 .card-container {
   background: transparent;
   border-radius: 20px;
