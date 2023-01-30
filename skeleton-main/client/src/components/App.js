@@ -57,7 +57,7 @@ const App = () => {
         <Profile path="/profile" userId={userId} />
         <Leaderboard path="/leaderboard" />
         <Lobby path="/lobby" userId={userId} />
-        <Game path="/game" />
+        <Game path="/game" userId={userId}/>
       </Router>
     </>
   );
