@@ -138,10 +138,12 @@ router.post("/leavelobby", (req, res) => {
   )
     .then(() => {
       Lobby.findOne({ lobbyName: req.body.lobbyName }).then((lobby) => {
-        if (lobby.userIds.length === 0) {
-          Lobby.deleteOne({ lobbyName: req.body.lobbyName }).then();
-        } else {
-          socketManager.getIo().emit("lobbyLeave", req.body.userId);
+        if (lobby) {
+          if (lobby.userIds.length === 0) {
+            Lobby.deleteOne({ lobbyName: req.body.lobbyName }).then();
+          } else {
+            socketManager.getIo().emit("lobbyLeave", req.body.userId);
+          }
         }
       });
     })
