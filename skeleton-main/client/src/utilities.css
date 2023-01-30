@@ -107,6 +107,15 @@ form {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
+.backgroundprofile {
+  background-image: url("https://images.unsplash.com/photo-1607072210042-36280f9e10aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmVhdXRpZnVsJTIwd2F0ZXJ8ZW58MHx8MHx8&w=1000&q=80") !important;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
 body::-webkit-scrollbar {
   display: none;
 }

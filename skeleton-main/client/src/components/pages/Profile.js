@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import NewName from "../modules/NewName";
 import { get, post } from "../../utilities.js";
+import "../../utilities.css";
 
 const Profile = (props) => {
   if (!props.userId) {
@@ -33,36 +34,36 @@ const Profile = (props) => {
       });
   });
   return (
-    <div className="card-container">
-      <span className="pro">
-        <i className="message fas fa-envelope"></i>
-      </span>
-      <div className="m-b-25">
-        <img
-          decoding="async"
-          className="round img-radius"
-          // src="https://weblab.mit.edu/public/img/logo.svg"
-          src="https://web.mit.edu/graphicidentity/images/examples/tim-the-beaver-3.png"
-          alt="user"
-        />
-      </div>
-
-      <h2>{userName}</h2>
-      <div>
-        <NewName userId={props.userId} />
-      </div>
-      <hr></hr>
-
-      <div className="skills">
-        <h1 className="MainContainer-center">Statistics</h1>
-        <ul>
-          <li>Wins: {userWins}</li>
-          <li>Games Played: {userGamesPlayed}</li>
-          <li>Ranking: </li>
-          <li>TBD</li>
-          <li>TBD</li>
-          <li>TBD</li>
-        </ul>
+    <div className="backgroundimage">
+      <div className="card-container">
+        <span className="pro">
+          <i className="message fas fa-envelope"></i>
+        </span>
+        <div className="m-b-25">
+          <img
+            decoding="async"
+            className="round img-radius"
+            // src="https://weblab.mit.edu/public/img/logo.svg"
+            src="https://web.mit.edu/graphicidentity/images/examples/tim-the-beaver-3.png"
+            alt="user"
+          />
+        </div>
+        <h2>{userName}</h2>
+        <div>
+          <NewName userId={props.userId} />
+        </div>
+        <hr></hr>
+        <div className="skills">
+          <h1 className="MainContainer-center">Statistics</h1>
+          <ul>
+            <li>Wins: {userWins}</li>
+            <li>Games Played: {userGamesPlayed}</li>
+            <li>Ranking: </li>
+            <li>TBD</li>
+            <li>TBD</li>
+            <li>TBD</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

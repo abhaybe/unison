@@ -1,3 +1,15 @@
+.backgroundimage {
+  background-image: url("https://i.pinimg.com/originals/d1/62/eb/d162eb793323f060aad388946a119340.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.25);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+
 .NoLogin-container {
   background-color: rgb(255, 255, 255);
   position: absolute;
@@ -75,7 +87,7 @@ p {
   width: 30vw;
   max-width: 100%;
   text-align: center;
-  z-index: -1;
+  z-index: 0;
 }
 
 .card-container .pro {

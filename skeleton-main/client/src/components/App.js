@@ -9,6 +9,7 @@ import Profile from "./pages/Profile.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Lobby from "./pages/Lobby.js";
 import Game from "./pages/Game.js";
+import Rules from "./pages/Rules.js";
 
 import "../utilities.css";
 
@@ -57,7 +58,8 @@ const App = () => {
         <Profile path="/profile" userId={userId} />
         <Leaderboard path="/leaderboard" />
         <Lobby path="/lobby" userId={userId} />
-        <Game path="/game" userId={userId}/>
+        <Game path="/game" userId={userId} />
+        <Rules path="/rules" />
       </Router>
     </>
   );

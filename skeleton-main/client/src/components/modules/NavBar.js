@@ -27,10 +27,14 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
         <Link to="/leaderboard/" className="NavBar-link">
           Leaderboard
         </Link>
+        <Link to="/rules/" className="NavBar-link">
+          Rules
+        </Link>
         <span className="NavBar-link NavBar-loginbutton">
           <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
             {userId ? (
               <button
+                className="button-54"
                 onClick={() => {
                   googleLogout();
                   handleLogout();

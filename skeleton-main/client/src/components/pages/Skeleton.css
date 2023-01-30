@@ -1,4 +1,5 @@
 /* Fill me in :) */
+
 .gradient-text {
   background-color: #f3ec78;
   background-image: linear-gradient(45deg, #f3ec78, #af4261);
@@ -53,4 +54,15 @@
   box-shadow: rgb(246, 84, 174) -2px -2px 0px 2px, rgb(255, 198, 0) 0px 0px 0px 4px,
     rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
   transform: scale(1.01);
+}
+
+.move-down-Skeleton {
+  position: absolute;
+  top: 40vh;
+  left: 40vw;
+}
+
+.move-down-Join {
+  position: absolute;
+  top: 20vh;
 }

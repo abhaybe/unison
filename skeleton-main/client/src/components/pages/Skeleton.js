@@ -67,8 +67,13 @@ const Skeleton = (props) => {
             <h1 className="center-div text-color">
               Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
             </h1>
-            <CreateLobby userId={userId} />
-            <JoinLobby userId={userId} />
+            <div className="move-down-Skeleton">
+              <CreateLobby userId={userId} />
+
+              <div className="move-down-Join">
+                <JoinLobby userId={userId} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

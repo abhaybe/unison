@@ -3,6 +3,7 @@ import "./Leaderboard.css";
 import LeaderList from "../modules/LeaderList";
 // import { get } from "mongoose";
 import { get } from "../../utilities";
+import "../../utilities.css";
 
 const Leaderboard = () => {
   const [Leaders, setLeaders] = useState([]);
@@ -14,7 +15,7 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className="move-down bring-behind">
+    <div className="move-down-Leaderboard bring-behind">
       <div className="center-div color-textx">
         <h1 className="center-title">Global Leaderboard</h1>
         <table className="content-table">
