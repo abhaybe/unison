@@ -10,6 +10,9 @@ const getRandomInt = (min, max) => {
 };
 
 // keyMaps: {[userid, movement]:[userid, letter]}
-const assignKeyMaps = {
-  keyMaps,
-};
+function assignKeyMaps(keyMaps) {
+  let step = 0;
+  for (let i = 0; i < 4; i++) {
+    let keyMapskeys = [];
+  }
+}
