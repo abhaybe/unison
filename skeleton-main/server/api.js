@@ -91,7 +91,7 @@ router.post("/lobby", (req, res) => {
         )
           .then(() => {
             console.log("hahhaha");
-            socketManager.getIo().emit("lobbySocket", req.body.userId);
+            socketManager.getIo().emit("lobbySocket", [req.body.userId, req.body.lobbyName]);
           })
           .then(() => console.log("thennn"));
       } else {
@@ -102,7 +102,7 @@ router.post("/lobby", (req, res) => {
         });
         return newLobby.save().then(() => {
           console.log("hahahahahha");
-          socketManager.getIo().emit("lobbySocket", req.body.userId);
+          socketManager.getIo().emit("lobbySocket", [req.body.userId, req.body.lobbyName]);
         });
 
         // socket initiaition here maybe?
