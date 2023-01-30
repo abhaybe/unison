@@ -17,6 +17,13 @@ const Leaderboard = () => {
   return (
     <div className="move-down-Leaderboard bring-behind">
       <div className="center-div color-textx">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/6941/6941697.png"
+          alt="Trulli"
+          width="50"
+          height="50"
+        />
+
         <h1 className="center-title">Global Leaderboard</h1>
         <table className="content-table">
           <tbody>

@@ -7,6 +7,10 @@
   padding-top: 15vh;
 }
 
+.crown-image {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/6941/6941697.png");
+}
+
 .content-table {
   border-collapse: collapse;
   margin: auto;
