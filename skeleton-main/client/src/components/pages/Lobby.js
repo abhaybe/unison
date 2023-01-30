@@ -68,12 +68,15 @@ const Lobby = (props) => {
 
   useEffect(() => {
     const callSocket = (data) => {
-      // console.log("please work", Lobbyinfo, String(data));
-      setLobbyinfo((oldInfo) => {
-        const arr = [...oldInfo, data];
-        console.log(" workkk", oldInfo, arr, data);
-        return arr;
-      });
+      console.log(" workkk", data, userLobby);
+      if (data[1] === userLobby) {
+        // console.log("please work", Lobbyinfo, String(data));
+        setLobbyinfo((oldInfo) => {
+          const arr = [...oldInfo, data[0]];
+          console.log(" workkk", oldInfo, arr, data);
+          return arr;
+        });
+      }
     };
 
     const leaveSocket = (data) => {
@@ -94,7 +97,7 @@ const Lobby = (props) => {
       socket.off("lobbySocket", callSocket);
       socket.off("lobbyLeave", leaveSocket);
     };
-  }, []);
+  }, [userLobby]);
 
   const handleSubmit = (event) => {
     console.log("button clicked");
@@ -132,7 +135,9 @@ const Lobby = (props) => {
 
   useEffect(() => {
     const onApiCall = (data) => {
-      onSubmitStart(data);
+      if (data === userLobby) {
+        onSubmitStart(data);
+      }
     };
 
     socket.on("gameStart", onApiCall);
@@ -140,7 +145,7 @@ const Lobby = (props) => {
     return () => {
       socket.off("gameStart", onApiCall);
     };
-  });
+  }, [userLobby]);
   //   if ({ userLobby }.userLobby !== "") {
 
   if (userLobby !== "") {
