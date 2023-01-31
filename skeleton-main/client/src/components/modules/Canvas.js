@@ -2,7 +2,7 @@ import React from "react";
 import { createMaze } from "./Maze.js";
 import { socket } from "../../client-socket.js";
 import "./Canvas.css";
-import { TrapFocus } from "@mui/base";
+// import { TrapFocus } from "@mui/base";
 
 // https://css-tricks.com/using-requestanimationframe-with-react-hooks/
 class Canvas extends React.Component {
@@ -21,7 +21,7 @@ class Canvas extends React.Component {
     this.circleRadius = 10;
     this.maxx = this.walls[0].length;
     this.maxy = this.walls[0][0].length;
-    this.unit = Math.floor(Math.min(window.innerHeight, window.innerWidth)/13);
+    this.unit = Math.floor(Math.min(window.innerHeight, window.innerWidth) / 13);
     this.width = this.maxx * this.unit;
     this.height = this.maxy * this.unit;
     this.state = { coordinates: [25, this.height - 25], velocity: [0, 0] };
@@ -29,7 +29,7 @@ class Canvas extends React.Component {
   }
 
   handleKeyUp(event) {
-    event.preventDefault()
+    event.preventDefault();
     socket.emit("serverEndMove", { user: this.props.userId, action: event.key });
   }
 
@@ -39,11 +39,11 @@ class Canvas extends React.Component {
     socket.emit("serverStartMove", { user: this.props.userId, action: event.key });
   }
 
-  handleActionStart(data){
+  handleActionStart(data) {
     // console.log(this.props)
-    if (data[0]!==this.props.userId) return;
+    if (data[0] !== this.props.userId) return;
     switch (data[1]) {
-      case "left":;
+      case "left":
         this.setState({ velocity: [-2, 0] });
         // console.log(this.state.velocity)
         break;
@@ -59,9 +59,9 @@ class Canvas extends React.Component {
     }
   }
 
-  handleActionEnd(data){
-    if (data[0]!==this.props.userId) return;
-    this.setState({velocity: [0, 0]})
+  handleActionEnd(data) {
+    if (data[0] !== this.props.userId) return;
+    this.setState({ velocity: [0, 0] });
   }
 
   draw_walls(ctx) {
@@ -83,12 +83,12 @@ class Canvas extends React.Component {
     }
   }
 
-  canMove(ctx){
+  canMove(ctx) {
     let x = Math.floor(this.state.coordinates[0] / 50);
     let y = Math.floor((this.height - this.state.coordinates[1]) / 50);
     let velocity = this.state.velocity;
     let walls = this.walls;
-    // check if out of bounds 
+    // check if out of bounds
     if (velocity[1] == -2 && (walls[0][x][y] || y == this.maxy - 1)) {
       if (this.state.coordinates[1] < 10) return false;
     }
@@ -106,7 +106,7 @@ class Canvas extends React.Component {
     x = this.state.coordinates[0] + this.state.velocity[0];
     y = this.state.coordinates[1] + this.state.velocity[1];
     let radius = this.circleRadius;
-    var imageData = ctx.getImageData(x -radius, y - radius, radius * 2, radius * 2);
+    var imageData = ctx.getImageData(x - radius, y - radius, radius * 2, radius * 2);
     var pixels = imageData.data;
     var w = imageData.width;
     var h = imageData.height;
@@ -114,24 +114,24 @@ class Canvas extends React.Component {
     // console.log(pixels.length);
     // ctx.putImageData(imageData, this.width - 20, 0);
     for (var i = 0; i < l; i++) {
-        var r = pixels[i*4]; // Red
-        var g = pixels[i*4+1]; // Green
-        var b = pixels[i*4+2]; // Blue
-        var a = pixels[i*4+3]; // Alpha
+      var r = pixels[i * 4]; // Red
+      var g = pixels[i * 4 + 1]; // Green
+      var b = pixels[i * 4 + 2]; // Blue
+      var a = pixels[i * 4 + 3]; // Alpha
 
-        // skip to next iteration if the alpha of this pixel is 0
-        if(a == 0) {
-            continue;
-        }
-        // console.log("hi", r, g, b, a);
+      // skip to next iteration if the alpha of this pixel is 0
+      if (a == 0) {
+        continue;
+      }
+      // console.log("hi", r, g, b, a);
 
-        // get the position of this pixel
-        let py = Math.floor(i / w);
-        let px = i - py * w;
-        // check for collision and exit is there is one
-        if((px - radius)*(px - radius) + (py - radius)*(py - radius) < radius*radius) {
-            return false;
-        }
+      // get the position of this pixel
+      let py = Math.floor(i / w);
+      let px = i - py * w;
+      // check for collision and exit is there is one
+      if ((px - radius) * (px - radius) + (py - radius) * (py - radius) < radius * radius) {
+        return false;
+      }
     }
     return true;
   }
@@ -149,7 +149,7 @@ class Canvas extends React.Component {
     // console.log(this.state.velocity)
     const canvas = this.canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d", {willReadFrequently: true});
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     ctx.clearRect(0, 0, this.width, this.height);
     this.draw_walls(ctx);
     ctx.beginPath();
@@ -173,7 +173,13 @@ class Canvas extends React.Component {
     }
 
     ctx.beginPath();
-    ctx.arc(this.state.coordinates[0], this.state.coordinates[1], this.circleRadius, 0, 2 * Math.PI);
+    ctx.arc(
+      this.state.coordinates[0],
+      this.state.coordinates[1],
+      this.circleRadius,
+      0,
+      2 * Math.PI
+    );
     ctx.fill();
 
     this.didWin();
@@ -186,12 +192,12 @@ class Canvas extends React.Component {
     // canvas.focus();
     if (!canvas) return;
     this.animationFrameId = requestAnimationFrame(this.animate);
-    socket.on("startMove", this.handleActionStart)
-    socket.on("endMove", this.handleActionEnd)
+    socket.on("startMove", this.handleActionStart);
+    socket.on("endMove", this.handleActionEnd);
   }
 
-  componentWillUnmount(){
-    window.cancelAnimationFrame(this.animationFrameId)
+  componentWillUnmount() {
+    window.cancelAnimationFrame(this.animationFrameId);
   }
 
   render() {

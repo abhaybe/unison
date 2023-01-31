@@ -132,6 +132,10 @@
   text-align: center;
 }
 
+.Duplicate-Lobby-Margin-Move {
+  margin-top: 1.5vh;
+}
+
 .card-container {
   background: transparent;
   border-radius: 20px;

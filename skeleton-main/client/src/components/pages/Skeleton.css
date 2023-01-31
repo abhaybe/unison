@@ -49,6 +49,10 @@
   color: white;
 }
 
+.button-padding {
+  padding: 40px;
+}
+
 .tab {
   background-color: rgba(49, 58, 66, 0.75);
   justify-content: center;

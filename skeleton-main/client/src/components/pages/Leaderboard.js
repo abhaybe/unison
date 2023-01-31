@@ -24,7 +24,7 @@ const Leaderboard = () => {
           height="50"
         />
 
-        <h1 className="center-title">Global Leaderboard</h1>
+        <h1 className="center-title">Global Leaderboard - Wins</h1>
         <table className="content-table">
           <tbody>
             <tr>

@@ -40,9 +40,6 @@ const CreateLobby = (props) => {
       <h3 className="paddingmove"> Create a Lobby!</h3>
       <div>{/* <p>{props.userName}</p> */}</div>
       <div>
-        <div style={{ visibility: popup }} className="popup Duplicate-Lobbytwo">
-          Lobby already exists! Please use a different lobby name.
-        </div>
         <input
           className="CreateLobby-TextEntry focus"
           type="text"
@@ -60,6 +57,9 @@ const CreateLobby = (props) => {
         >
           Submit
         </button>
+      </div>
+      <div style={{ visibility: popup }} className="Duplicate-Lobby-Margin-Move">
+        Lobby already exists! Please use a different lobby name.
       </div>
     </div>
   );

@@ -45,12 +45,6 @@ const JoinLobby = (props) => {
       <h3 className="paddingmove"> Join a Lobby!</h3>
       <div>{/* <p>{props.userName}</p> */}</div>
       <div>
-        <div style={{ visibility: popup }} className="popup Duplicate-Lobby">
-          Lobby does not exist!
-        </div>
-        <div style={{ visibility: popupStart }} className="popup GameStart-Lobby">
-          Game is already in progress!
-        </div>
         <input
           className="JoinLobby-TextEntry focus"
           type="text"
@@ -68,6 +62,12 @@ const JoinLobby = (props) => {
         >
           Submit
         </button>
+      </div>
+      <div style={{ visibility: popup }} className="Duplicate-Join-Margin-Move">
+        Lobby does not exist!
+      </div>
+      <div style={{ visibility: popupStart }} className="Duplicate-Join-Margin-Move">
+        Game is already in progress!
       </div>
     </div>
   );
