@@ -48,7 +48,7 @@
 .box {
   color: rgb(0, 0, 0);
   position: absolute;
-  top: 10vh;
+  top: 20vh;
   left: 10vw;
   font-size: 2vw;
   padding: 10px;
@@ -63,7 +63,7 @@
 .box1 {
   color: rgb(0, 0, 0);
   position: absolute;
-  top: 30vh;
+  top: 40vh;
   left: 10vw;
   font-size: 2vw;
   padding: 10px;
@@ -78,7 +78,7 @@
 .box2 {
   color: rgb(0, 0, 0);
   position: absolute;
-  top: 50vh;
+  top: 60vh;
   left: 10vw;
   font-size: 2vw;
   padding: 10px;
@@ -92,7 +92,7 @@
 .box3 {
   color: rgb(0, 0, 0);
   position: absolute;
-  top: 85vh;
+  top: 95vh;
   left: 10vw;
   font-size: 2vw;
   padding: 10px;
@@ -107,7 +107,7 @@
 .box4 {
   color: rgb(0, 0, 0);
   position: absolute;
-  top: 102vh;
+  top: 112vh;
   left: 10vw;
   font-size: 2vw;
   padding: 10px;
@@ -211,4 +211,18 @@
   91% {
     color: rgb(255, 0, 127);
   }
+}
+
+.extend {
+  height: 22vh;
+}
+
+.Rules-Title {
+  position: absolute;
+  top: 12.5vh;
+  left: 25vw;
+  width: 50vw;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
 }

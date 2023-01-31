@@ -36,9 +36,6 @@ const Profile = (props) => {
   return (
     <div className="backgroundimage">
       <div className="card-container">
-        <span className="pro">
-          <i className="message fas fa-envelope"></i>
-        </span>
         <div className="m-b-25">
           <img
             decoding="async"
@@ -52,7 +49,6 @@ const Profile = (props) => {
         <div>
           <NewName userId={props.userId} />
         </div>
-        <hr></hr>
         <div className="skills">
           <h1 className="MainContainer-center">Statistics</h1>
           <ul>

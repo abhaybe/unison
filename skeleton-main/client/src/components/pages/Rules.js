@@ -5,6 +5,7 @@ import { Link } from "@reach/router";
 const Rules = (props) => {
   return (
     <main className="grid">
+      <div className="Rules-Title">Rules:</div>
       <div className="box">
         Hey there! Welcome to U&Ison! It's pretty amazing that you stumbled upon such a disting
         <span className="gradient-text">ui</span>shed site! But don't get too excited yet, let's
@@ -33,6 +34,7 @@ const Rules = (props) => {
         <Link to="/profile">Profile</Link> page! With that, you're ready to to play! Hopefully you
         and your friends can work together in <span class="demo rainbow">UNISON</span>!
       </div>
+      <div className="extend"></div>
     </main>
   );
 };

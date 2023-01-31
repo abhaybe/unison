@@ -57,3 +57,7 @@
 .bring-behind {
   z-index: -1;
 }
+
+.center-title {
+  padding: 10px;
+}
