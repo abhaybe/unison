@@ -152,13 +152,13 @@ const Lobby = (props) => {
   if (userLobby !== "") {
     return (
       <div className="move-down1 ">
-        <div className="buttons">
-          <button className="buttonn hover" onClick={onSubmitmake}>
+        <div>
+          <button className="Lobby-Button1 hover" onClick={onSubmitmake}>
             Start Game
           </button>
         </div>
-        <div className="buttonstwo">
-          <button className="buttonntwo hover" type="submit" onClick={handleSubmit}>
+        <div>
+          <button className="Lobby-Button2 hover" type="submit" onClick={handleSubmit}>
             Leave Game
           </button>
         </div>
@@ -166,12 +166,12 @@ const Lobby = (props) => {
           <img src="https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif" />
         </div>
 
-        <div className="actual-stuff">
-          <div className="right-thing">
-            <h1 className="center-div color-textt">
+        <div>
+          <div>
+            <h1 className="color-textt Lobby-PositionTitle">
               Hello <span className="gradient-text">{userName}</span>, let's play U&Ison!
             </h1>
-            <h1 className="center-div color-textt">
+            <h1 className="Lobby-PositionLobby color-textt">
               You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
             </h1>
           </div>

@@ -1,3 +1,21 @@
+.Lobby-PositionTitle {
+  position: absolute;
+  top: 12.5vh;
+  left: 10vw;
+  text-align: center;
+  margin: auto;
+  width: 80vw;
+}
+
+.Lobby-PositionLobby {
+  position: absolute;
+  top: 20vh;
+  left: 10vw;
+  text-align: center;
+  margin: auto;
+  width: 80vw;
+}
+
 .gradient-text {
   background-color: #f3ec78;
   background-image: linear-gradient(45deg, #f3ec78, #af4261);
@@ -34,12 +52,12 @@
   max-width: 100%;
 }
 
-.actual-stuff {
+/* .actual-stuff {
   color: black;
   position: absolute;
   top: 8vh;
   left: 0vw;
-}
+} */
 
 .imagee {
   /* src: url(https://user-images.githubusercontent.com/51216389/87076088-a2c31c00-c1f7-11ea-9a18-e527bd1198cf.gif); */
@@ -53,20 +71,21 @@
 img {
   max-width: 100%;
 }
-.right-thing {
+/* .right-thing {
   position: absolute;
   width: 30vw;
   height: 40vh;
   top: 8vh;
   left: 20vw;
   z-index: -4;
-}
+} */
 
 .playerlist {
   position: absolute;
-  top: 30vh;
-  left: 33vw;
+  top: 40vh;
+  left: 20vw;
   width: 60vw;
+  text-align: center;
 }
 
 .butonn {
@@ -128,14 +147,6 @@ img {
   transition: all 0.2s;
 }
 
-.buttons {
-  position: absolute;
-  width: 50vw;
-  height: 50vh;
-  left: 43vw;
-  top: 30vh;
-}
-
 .buttonstwo {
   position: absolute;
   width: 50vw;
@@ -150,8 +161,18 @@ img {
   left: 20vw;
 }
 
-/* .moveNameList {
+.Lobby-Button1 {
   position: absolute;
-  top: 33vh;
-  left: 35vw;
-} */
+  top: 30%;
+  left: 45%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.Lobby-Button2 {
+  position: absolute;
+  top: 30%;
+  left: 55%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}

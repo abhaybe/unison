@@ -44,14 +44,14 @@ const Skeleton = (props) => {
       <div className="backgroundanimation text-color">
         <div className="tab">
           {" "}
-          <h1 className="center-div">
+          <h1 className="InLobby-movedownTitle">
             Hello <span className="gradient-text text-color">{userName}</span>, let's play U&Ison!
           </h1>
-          <h1 className="center-div text-color">
+          <h1 className="text-color InLobby-movedownLobby">
             You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
           </h1>
-          <div className="center-div text-color">
-            <button className="Skeleton-Button hover">
+          <div className="text-color InLobby-movedownButton ">
+            <button className="Skeleton-Button hover ">
               <Link to="/lobby">Go to Lobby</Link>
             </button>
           </div>
