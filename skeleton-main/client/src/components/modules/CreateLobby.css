@@ -124,8 +124,8 @@
 
 .Duplicate-Lobbytwo {
   position: absolute;
-  top: 80vh;
-  left: 40vw;
+  top: 40vh;
+  left: -2vw;
   width: 20vw;
   height: 10vh;
   background: rgba(114, 89, 255, 0.2);

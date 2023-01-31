@@ -11,7 +11,10 @@
 }
 
 .center-div {
-  width: 800px;
+  width: 75vw;
+  position: absolute;
+  top: 15vh;
+  left: 20vw;
   margin: auto;
   text-align: center;
   padding-top: 50vh;
@@ -58,7 +61,7 @@
 
 .move-down-Skeleton {
   position: absolute;
-  top: 40vh;
+  top: 25vh;
   left: 40vw;
 }
 

@@ -59,8 +59,8 @@
 
 .Duplicate-Lobby {
   position: absolute;
-  top: 70vh;
-  left: 40vw;
+  top: 32vh;
+  left: -2vw;
   width: 20vw;
   height: 5vh;
   background: rgba(114, 89, 255, 0.2);
@@ -70,8 +70,8 @@
 
 .GameStart-Lobby {
   position: absolute;
-  top: 90vh;
-  left: 40vw;
+  top: 40vh;
+  left: -2vw;
   width: 20vw;
   height: 5vh;
   background: rgba(114, 89, 255, 0.2);
