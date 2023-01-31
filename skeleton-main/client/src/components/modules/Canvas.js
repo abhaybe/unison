@@ -46,20 +46,20 @@ class Canvas extends React.Component {
       case "ArrowLeft":
         // console.log("here")
         event.preventDefault();
-        this.setState({ velocity: [-2, 0] });
+        this.setState({ velocity: [-1, 0] });
         // console.log(this.state.velocity)
         break;
       case "ArrowRight":
         event.preventDefault();
-        this.setState({ velocity: [2, 0] });
+        this.setState({ velocity: [1, 0] });
         break;
       case "ArrowDown":
         event.preventDefault();
-        this.setState({ velocity: [0, 2] });
+        this.setState({ velocity: [0, 1] });
         break;
       case "ArrowUp":
         event.preventDefault();
-        this.setState({ velocity: [0, -2] });
+        this.setState({ velocity: [0, -1] });
         break;
       default:
         console.log(`Unknown key: ${event.key}`);
