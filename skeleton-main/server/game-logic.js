@@ -66,4 +66,6 @@ module.exports = {
   gameState,
   addPlayers,
   assignKeyMaps,
+  getPlayerAction,
 };
+

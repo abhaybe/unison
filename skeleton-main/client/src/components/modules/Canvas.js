@@ -12,6 +12,8 @@ class Canvas extends React.Component {
     this.animate = this.animate.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.handleActionStart = this.handleActionStart.bind(this);
+    this.handleActionEnd = this.handleActionEnd.bind(this);
     this.draw_walls = this.draw_walls.bind(this);
     this.walls = createMaze();
     this.maxx = this.walls[0].length;
@@ -23,47 +25,39 @@ class Canvas extends React.Component {
   }
 
   handleKeyUp(event) {
-    switch (event.key) {
-      case "ArrowLeft":
-      case "ArrowRight":
-      case "ArrowDown":
-      case "ArrowUp":
-        event.preventDefault();
-        this.setState({ velocity: [0, 0] });
-        // setVelocity([0, 0]);
+    event.preventDefault()
+    socket.emit("serverEndMove", { user: this.props.userId, action: event.key });
+  }
+
+  handleKeyDown(event) {
+    console.log("hi", this.props)
+    event.preventDefault();
+    socket.emit("serverStartMove", { user: this.props.userId, action: event.key });
+  }
+
+  handleActionStart(data){
+    console.log(this.props)
+    if (data[0]!==this.props.userId) return;
+    switch (data[1]) {
+      case "left":;
+        this.setState({ velocity: [-2, 0] });
+        // console.log(this.state.velocity)
         break;
-      default:
+      case "right":
+        this.setState({ velocity: [2, 0] });
+        break;
+      case "down":
+        this.setState({ velocity: [0, 2] });
+        break;
+      case "up":
+        this.setState({ velocity: [0, -2] });
         break;
     }
   }
 
-  handleKeyDown(event) {
-    // this.setState({"velocity" : [-1000,50]})
-    // console.log(this.state.velocity)
-    socket.emit("move", { user: this.props.userId, action: event.key });
-    // socket.emit("move", {user : props.userId, action : event.key})
-    switch (event.key) {
-      case "ArrowLeft":
-        // console.log("here")
-        event.preventDefault();
-        this.setState({ velocity: [-1, 0] });
-        // console.log(this.state.velocity)
-        break;
-      case "ArrowRight":
-        event.preventDefault();
-        this.setState({ velocity: [1, 0] });
-        break;
-      case "ArrowDown":
-        event.preventDefault();
-        this.setState({ velocity: [0, 1] });
-        break;
-      case "ArrowUp":
-        event.preventDefault();
-        this.setState({ velocity: [0, -1] });
-        break;
-      default:
-        console.log(`Unknown key: ${event.key}`);
-    }
+  handleActionEnd(data){
+    if (data[0]!==this.props.userId) return;
+    this.setState({velocity: [0, 0]})
   }
 
   draw_walls(ctx) {
@@ -154,6 +148,8 @@ class Canvas extends React.Component {
     // canvas.focus();
     if (!canvas) return;
     requestAnimationFrame(this.animate);
+    socket.on("startMove", this.handleActionStart)
+    socket.on("endMove", this.handleActionEnd)
   }
 
   render() {

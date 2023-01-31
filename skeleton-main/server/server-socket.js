@@ -37,12 +37,17 @@ module.exports = {
         const user = getUserFromSocketID(socket.id);
         removeUser(user, socket);
       });
-      socket.on("move", (input) => {
+      socket.on("serverStartMove", (input) => {
         // Listen for moves from client and move player accordingly
-        console.log(input.user + " " + input.action);
-
+        // console.log(input.user + " " + input.action);
+        let action = gameLogic.getPlayerAction(input.user, input.action)
+        if (action) io.emit("startMove", action);
         // if (user) gameLogic.movePlayer(user._id, dir);
       });
+      socket.on("serverEndMove", (input) => {
+        let action = gameLogic.getPlayerAction(input.user, input.action)
+        if (action) io.emit("endMove", action);
+      })
       socket.on("setGameState", (input) => {
         gameLogic.addPlayers(input);
         console.log("blahhhh", input, gameLogic.gameState.players);

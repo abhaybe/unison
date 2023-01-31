@@ -4,7 +4,7 @@ import { Maze } from "../modules/Maze.js";
 import "./Game.css";
 
 const Game = (props) => {
-  console.log(props);
+  // console.log(props);
   // componentDidMount() {
   //   this.Canvas.focus();
   // }
