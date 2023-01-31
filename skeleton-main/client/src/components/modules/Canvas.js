@@ -126,6 +126,14 @@ class Canvas extends React.Component {
     ctx.arc(this.state.coordinates[0], this.state.coordinates[1], 10, 0, 2 * Math.PI);
     ctx.fill();
     this.draw_walls(ctx);
+    ctx.beginPath();
+    ctx.moveTo(0, this.height);
+    ctx.lineTo(0, 0);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, this.height);
+    ctx.lineTo(this.width, this.height);
+    ctx.stroke();
     // console.log(this.state.velocity)
     // this.setState(prev => ({"velocity" : this.state.velocity}))
     if (this.canMove()) {
