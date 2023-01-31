@@ -3,6 +3,12 @@ const gameState = {
   players: {},
 };
 
+const addPlayers = (lobbylist) => {
+  lobbylist.forEach((obj) => {
+    gameState.players[obj] = 0;
+  });
+};
+
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -11,41 +17,51 @@ const getRandomInt = (min, max) => {
 
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
   }
 }
 
 // keyMaps: {[userid, letter]:[userid, movement]}
-let movements = ["up", "down", "left", "right"]
+let movements = ["up", "down", "left", "right"];
 const assignKeyMaps = () => {
-  let userIds = players
-  let arr = []
-  for (let userId of userIds){
-    for (let i = 0; i< 4; i++) arr.push(userId)
+  let userIds = Object.keys(gameState.players);
+  let arr = [];
+  for (let userId of userIds) {
+    for (let i = 0; i < 4; i++) arr.push(userId);
   }
-  shuffleArray(arr)
-  let i = 0
-  let used = {}
-  for (let userId of userIds){
-    user[userId] = []
+  shuffleArray(arr);
+  let i = 0;
+  let user = {};
+  for (let userId of userIds) {
+    user[userId] = [];
   }
-  for (let userId of userIds){
-    for (let movement of movements){
-      let letter = String.fromCharCode(65 + getRandomInt(0, 27))
-      while (letter in used[arr[i]]){
-        letter = String.fromCharCode(65 + getRandomInt(0, 27))
+  for (let userId of userIds) {
+    for (let movement of movements) {
+      let letter = String.fromCharCode(97 + getRandomInt(0, 26));
+
+      // only 7 key mappings and need to add check to make sure letter is not repeated
+      while (letter in user[arr[i]]) {
+        letter = String.fromCharCode(97 + getRandomInt(0, 26));
       }
-      gameState.keyMaps[[arr[i], letter]] = [userId, movement]
-      used[arr[i]].push(letter)
-      i+=1
+      gameState.keyMaps[[arr[i], letter]] = [userId, movement];
+      user[arr[i]].push(letter);
+      i += 1;
     }
   }
-}
+  console.log(gameState.keyMaps);
+};
 
 const getPlayerAction = (user, key) => {
-  return gameState.keyMaps[[user, key]]
-}
+  return gameState.keyMaps[[user, key]];
+};
 
+// data= keymaps
+
+module.exports = {
+  gameState,
+  addPlayers,
+  assignKeyMaps,
+};

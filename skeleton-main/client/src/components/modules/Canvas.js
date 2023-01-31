@@ -90,22 +90,22 @@ class Canvas extends React.Component {
     let y = Math.floor((this.height - this.state.coordinates[1]) / 50);
     let velocity = this.state.velocity;
     let walls = this.walls;
-    if (velocity[1] == -1 && (walls[0][x][y] || y == this.maxy - 1)) {
+    if (velocity[1] == -2 && (walls[0][x][y] || y == this.maxy - 1)) {
       if (this.state.coordinates[1] < 10) return false;
       let ywall = this.height - this.unit * (y + 1);
       if (this.state.coordinates[1] - ywall < 10) return false;
     }
-    if (velocity[0] == 1 && (walls[1][x][y] || x == this.maxx - 1)) {
+    if (velocity[0] == 2 && (walls[1][x][y] || x == this.maxx - 1)) {
       if (this.width - this.state.coordinates[0] < 10) return false;
       let xwall = this.unit * (x + 1);
       if (xwall - this.state.coordinates[0] < 10) return false;
     }
-    if (velocity[1] == 1 && ((y - 1 >= 0 && walls[0][x][y - 1]) || y == 0)) {
+    if (velocity[1] == 2 && ((y - 1 >= 0 && walls[0][x][y - 1]) || y == 0)) {
       if (this.height - this.state.coordinates[1] < 10) return false;
       let ywall = this.height - this.unit * y;
       if (ywall - this.state.coordinates[1] < 10) return false;
     }
-    if (velocity[0] == -1 && ((x - 1 >= 0 && walls[1][x - 1][y]) || x == 0)) {
+    if (velocity[0] == -2 && ((x - 1 >= 0 && walls[1][x - 1][y]) || x == 0)) {
       if (this.state.coordinates[0] < 10) return false;
       let xwall = this.unit * x;
       if (this.state.coordinates[0] - xwall < 10) return false;

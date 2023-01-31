@@ -35,7 +35,7 @@ router.get("/whoami", (req, res) => {
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
-  console.log(req.user)
+  console.log(req.user);
   if (req.user)
     socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
@@ -164,6 +164,7 @@ router.post("/incrementGamesPlayed", (req, res) => {
 
 router.post("/gameStart", (req, res) => {
   socketManager.getIo().emit("gameStart", req.body.lobbyName);
+  socketManager.getIo().emit("setGameState", req.body.lobbyList);
 });
 
 // anything else falls to this "not found" case

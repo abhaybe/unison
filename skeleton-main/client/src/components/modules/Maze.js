@@ -73,7 +73,6 @@ export const Maze = ({ x, y }) => {
             // marginTop: (walls[0][i][coord]) ? "0px" : `${thick}px`,
             borderRight: walls[1][i][coord] ? `${thick}px solid #999` : `${thick}px solid #fff`,
             // marginRight: (walls[1][i][coord]) ? "0px" : `${thick}px`
-            // borderLeft: walls[2][i][coord] ? `${thick}px solid #999` : `${thick}px solid #fff`,
           }}
         ></div>
       );

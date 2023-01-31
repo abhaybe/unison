@@ -3,6 +3,8 @@ let io;
 const userToSocketMap = {}; // maps user ID to socket object
 const socketToUserMap = {}; // maps socket ID to user object
 
+const gameLogic = require("./game-logic");
+
 const getSocketFromUserID = (userid) => userToSocketMap[userid];
 const getUserFromSocketID = (socketid) => socketToUserMap[socketid];
 const getSocketFromSocketID = (socketid) => io.sockets.connected[socketid];
@@ -38,12 +40,16 @@ module.exports = {
       socket.on("move", (input) => {
         // Listen for moves from client and move player accordingly
         console.log(input.user + " " + input.action);
-        
+
         // if (user) gameLogic.movePlayer(user._id, dir);
       });
+      socket.on("setGameState", (input) => {
+        gameLogic.addPlayers(input);
+        console.log("blahhhh", input, gameLogic.gameState.players);
+        gameLogic.assignKeyMaps();
+        console.log(gameLogic.gameState);
+      });
     });
-
-    
   },
 
   addUser: addUser,
