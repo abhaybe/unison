@@ -24,8 +24,9 @@ const Rules = (props) => {
       </div>
       <div className="box3">
         3. Compete with other players to achieve the fastest time! Those who cr
-        <span className="gradient-text3">ui</span>se through the quickest will have their names
-        displayed on the <Link to="/leaderboard">Global Leaderboard</Link>.
+        <span className="gradient-text3">ui</span>se through the q
+        <span className="gradient-text3">ui</span>ckest will have their names displayed on the{" "}
+        <Link to="/leaderboard">Global Leaderboard</Link>.
       </div>
       <div className="box4">
         4. Make sure to \view your statistics and customize your username in the{" "}

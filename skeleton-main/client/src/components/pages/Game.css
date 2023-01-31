@@ -1,13 +1,24 @@
 .centering {
   position: absolute;
-  top: 20vh;
-  left: 30vw;
-  width: 40vw;
+  top: 12.5vh;
+  right: 30vw;
+  width: 40vw !important;
 }
 
 .finished-list {
   position: absolute;
   top: 10vh;
   left: 50vw;
-  width: 50vw;
+  width: 10vw;
+}
+
+.finish-line {
+  position: absolute;
+  top: 12.5vh;
+  right: 30vw;
+  background-color: red;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  opacity: 0.5;
 }

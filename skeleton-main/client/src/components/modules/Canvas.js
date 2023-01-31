@@ -1,7 +1,7 @@
 import React from "react";
 import { createMaze } from "./Maze.js";
 import { socket } from "../../client-socket.js";
-//import "../modules/Canvas.css";
+import "./Canvas.css";
 
 // https://css-tricks.com/using-requestanimationframe-with-react-hooks/
 class Canvas extends React.Component {
@@ -40,26 +40,26 @@ class Canvas extends React.Component {
   handleKeyDown(event) {
     // this.setState({"velocity" : [-1000,50]})
     // console.log(this.state.velocity)
-    socket.emit("move", {user: this.props.userId, action : event.key})
+    socket.emit("move", { user: this.props.userId, action: event.key });
     // socket.emit("move", {user : props.userId, action : event.key})
     switch (event.key) {
       case "ArrowLeft":
         // console.log("here")
         event.preventDefault();
-        this.setState({ velocity: [-1, 0] });
+        this.setState({ velocity: [-2, 0] });
         // console.log(this.state.velocity)
         break;
       case "ArrowRight":
         event.preventDefault();
-        this.setState({ velocity: [1, 0] });
+        this.setState({ velocity: [2, 0] });
         break;
       case "ArrowDown":
         event.preventDefault();
-        this.setState({ velocity: [0, 1] });
+        this.setState({ velocity: [0, 2] });
         break;
       case "ArrowUp":
         event.preventDefault();
-        this.setState({ velocity: [0, -1] });
+        this.setState({ velocity: [0, -2] });
         break;
       default:
         console.log(`Unknown key: ${event.key}`);
@@ -141,6 +141,7 @@ class Canvas extends React.Component {
 
   componentDidMount() {
     const canvas = this.canvasRef.current;
+    // canvas.focus();
     if (!canvas) return;
     requestAnimationFrame(this.animate);
   }
