@@ -22,6 +22,7 @@ class Canvas extends React.Component {
     this.width = this.maxx * 50;
     this.height = this.maxy * 50;
     this.state = { coordinates: [25, this.height - 25], velocity: [0, 0] };
+    this.won = 0;
   }
 
   handleKeyUp(event) {
@@ -107,7 +108,13 @@ class Canvas extends React.Component {
     return true;
   }
 
-  didWin() {}
+  didWin() {
+    if (this.state.coordinates[0] >= this.width - 25 && this.state.coordinates[1] <= 25) {
+      socket.emit("someonewon", this.props.userId);
+      // this.win = 1;
+      console.log("helllo there");
+    }
+  }
 
   animate(time) {
     // this.setState(prev=>({"velocity": [0, 100]}))
@@ -139,6 +146,7 @@ class Canvas extends React.Component {
         velocity: [prev.velocity[0], prev.velocity[1]],
       }));
     }
+    this.didWin();
 
     requestAnimationFrame(this.animate);
   }

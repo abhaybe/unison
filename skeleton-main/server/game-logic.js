@@ -9,6 +9,10 @@ const addPlayers = (lobbylist) => {
   });
 };
 
+const someoneWon = (userId) => {
+  gameState.players[userId] = 1;
+};
+
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -66,6 +70,6 @@ module.exports = {
   gameState,
   addPlayers,
   assignKeyMaps,
+  someoneWon,
   getPlayerAction,
 };
-

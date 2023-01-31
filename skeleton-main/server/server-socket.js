@@ -54,6 +54,22 @@ module.exports = {
         gameLogic.assignKeyMaps();
         console.log(gameLogic.gameState);
       });
+      socket.on("someonewon", (userId) => {
+        gameLogic.someoneWon(userId);
+        console.log(gameLogic.gameState);
+        let i = 0;
+        for (var key in gameLogic.gameState.players) {
+          if (gameLogic.gameState.players[key] === 1) {
+            i++;
+          }
+        }
+        console.log("i", i);
+        console.log("hello", Object.keys(gameLogic.gameState.players).length);
+        if (i === Object.keys(gameLogic.gameState.players).length) {
+          io.emit("gameWon", Object.keys(gameLogic.gameState.players));
+          console.log(Object.keys(gameLogic.gameState.players), "sdaasd");
+        }
+      });
     });
   },
 

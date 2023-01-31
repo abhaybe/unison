@@ -131,7 +131,6 @@ const Lobby = (props) => {
   const onSubmitmake = () => {
     onSubmitStart(userLobby);
     post("/api/gameStart", { lobbyName: userLobby, lobbyList: Lobbyinfo });
-    // socketManager.getIo().emit("gameStart", userLobby);
     socket.emit("setGameState", Lobbyinfo);
   };
 
