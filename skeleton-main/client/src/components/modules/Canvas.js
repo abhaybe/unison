@@ -9,6 +9,7 @@ class Canvas extends React.Component {
   constructor(props) {
     super(props);
     this.canvasRef = React.createRef(null);
+    this.animationFrameId = React.createRef(null);
     this.state = { coordinates: [50, 100], velocity: [0, 0] };
     this.animate = this.animate.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -20,9 +21,9 @@ class Canvas extends React.Component {
     this.circleRadius = 10;
     this.maxx = this.walls[0].length;
     this.maxy = this.walls[0][0].length;
-    this.unit = 50;
-    this.width = this.maxx * 50;
-    this.height = this.maxy * 50;
+    this.unit = Math.floor(Math.min(window.innerHeight, window.innerWidth)/13);
+    this.width = this.maxx * this.unit;
+    this.height = this.maxy * this.unit;
     this.state = { coordinates: [25, this.height - 25], velocity: [0, 0] };
     this.won = 0;
   }
@@ -177,16 +178,20 @@ class Canvas extends React.Component {
 
     this.didWin();
 
-    requestAnimationFrame(this.animate);
+    this.animationFrameId = requestAnimationFrame(this.animate);
   }
 
   componentDidMount() {
     const canvas = this.canvasRef.current;
     // canvas.focus();
     if (!canvas) return;
-    requestAnimationFrame(this.animate);
+    this.animationFrameId = requestAnimationFrame(this.animate);
     socket.on("startMove", this.handleActionStart)
     socket.on("endMove", this.handleActionEnd)
+  }
+
+  componentWillUnmount(){
+    window.cancelAnimationFrame(this.animationFrameId)
   }
 
   render() {
