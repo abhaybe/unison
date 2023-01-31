@@ -1,4 +1,5 @@
 .Center-Canvas {
-  position: relative;
-  align: center;
+  position: absolute;
+  top: 0vh;
+  right: 0vw;
 }
