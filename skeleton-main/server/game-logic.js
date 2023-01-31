@@ -27,6 +27,7 @@ function shuffleArray(array) {
 // keyMaps: {[userid, letter]:[userid, movement]}
 let movements = ["up", "down", "left", "right"];
 const assignKeyMaps = () => {
+  if (Object.keys(gameState.keyMaps).length != 0) return;
   let userIds = Object.keys(gameState.players);
   let arr = [];
   for (let userId of userIds) {
@@ -43,11 +44,12 @@ const assignKeyMaps = () => {
       let letter = String.fromCharCode(97 + getRandomInt(0, 26));
 
       // only 7 key mappings and need to add check to make sure letter is not repeated
-      while (letter in user[arr[i]]) {
+      while (user[arr[i]].indexOf(letter) != -1) {
         letter = String.fromCharCode(97 + getRandomInt(0, 26));
       }
       gameState.keyMaps[[arr[i], letter]] = [userId, movement];
       user[arr[i]].push(letter);
+      console.log(userId, movement, arr[i], letter);
       i += 1;
     }
   }

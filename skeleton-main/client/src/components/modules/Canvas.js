@@ -113,6 +113,8 @@ class Canvas extends React.Component {
     return true;
   }
 
+  didWin() {}
+
   animate(time) {
     // this.setState(prev=>({"velocity": [0, 100]}))
     // console.log(this.state.velocity)
