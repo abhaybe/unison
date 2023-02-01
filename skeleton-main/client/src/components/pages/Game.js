@@ -4,14 +4,21 @@ import { Maze } from "../modules/Maze.js";
 import "./Game.css";
 import { useNavigate } from "@reach/router";
 import { socket } from "../../client-socket.js";
+import { get, post } from "../../utilities.js";
 
 const Game = (props) => {
   console.log(props);
   const navigate = useNavigate();
 
-  const callBack = (userList) => {
+  const callBack = (userList, lobbyt) => {
+    const body = { userId: props.userId, lobbyName: lobbyt };
+
     console.log("hiiii");
+
     userList.forEach((obj) => {
+      post("/api/incrementWins", body).then(() => {
+        console.log("wins");
+      });
       console.log(obj, props.userId);
       if (obj === props.userId) {
         navigate("/lobby");

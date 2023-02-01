@@ -162,6 +162,12 @@ router.post("/incrementGamesPlayed", (req, res) => {
   );
 });
 
+router.post("/incrementWins", (req, res) => {
+  User.updateOne({ _id: req.body.userId }, { $inc: { wins: 1 } }).then(() =>
+    console.log("wins incremented!")
+  );
+});
+
 router.post("/gameStart", (req, res) => {
   socketManager.getIo().emit("gameStart", req.body.lobbyName);
   socketManager.getIo().emit("setGameState", req.body.lobbyList);
