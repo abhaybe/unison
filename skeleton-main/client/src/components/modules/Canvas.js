@@ -10,7 +10,7 @@ class Canvas extends React.Component {
     super(props);
     this.canvasRef = React.createRef(null);
     this.animationFrameId = React.createRef(null);
-    this.state = { coordinates: [50, 100], velocity: [0, 0] };
+    this.state = { coordinates: [50, 100], velocity: [0, 0] , win : false};
     this.animate = this.animate.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
@@ -138,10 +138,11 @@ class Canvas extends React.Component {
   }
 
   didWin() {
-    if (this.state.coordinates[0] >= this.width - 25 && this.state.coordinates[1] <= 25) {
+
+    if (this.state.coordinates[0] >= this.width - 25 && this.state.coordinates[1] <= 25 && !this.state.win) {
       socket.emit("someonewon", this.props.userId);
-      // this.win = 1;
-      console.log("helllo there");
+      this.setState({win : true});
+      console.log("helllo there, i won");
     }
   }
 

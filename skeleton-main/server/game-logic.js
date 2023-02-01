@@ -2,16 +2,12 @@ const User = require("./models/user");
 const Lobby = require("./models/lobby");
 
 async function getUserIdsOfGame (userId) {
-  let userIds = await User.findOne({ _id: userId }).then((user) => {
-    Lobby.findOne({lobbyName: user.lobby }).then((lobby) => {
-      lobby.userIds;
-    })
-  });
-  return userIds;
+  let user = await User.findOne({ _id: userId })
+  let lobby = await Lobby.findOne({lobbyName: user.lobby })
+  return lobby.userIds;
 }
 
 async function someoneWon (userId) { // adds that a person won
-  console.log("person won", userId)
   User.findOne({ _id: userId }).then((user) => {
     Lobby.updateOne({ lobbyName: user.lobby },
       { $push: { peopleWhoWon : userId } }

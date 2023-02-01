@@ -68,7 +68,10 @@ router.post("/username", (req, res) => {
 
 router.post("/gameLost", (req, res) => { // this user broadcast to everyone that the game is over
   console.log("here")
-  socketManager.getIo().emit("gameResult", {state : "lost", userList : gameLogic.getUserIdsOfGame(req.body.userId)});
+  gameLogic.getUserIdsOfGame(req.body.userId).then((userList) => {
+    socketManager.getIo().emit("gameResult", {state : "lost", userList : userList});
+  })
+  
 });
 
 router.post("/userlobby", (req, res) => {

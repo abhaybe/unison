@@ -112,7 +112,7 @@ const Lobby = (props) => {
     console.log("hiiii");
     userList.forEach((obj) => {
       console.log(obj, props.userId);
-      if (obj === props.userId) {
+      if (obj === props.userId && result.state=="won") {
         setPopup("visible");
       }
     });

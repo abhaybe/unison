@@ -14,29 +14,33 @@ const Game = (props) => {
   const navigate = useNavigate();
 
   const callBack = (result) => {
+    console.log("here")
     let userList = result.userList
-    get("/api/getuser", { userId: props.userId }).then((user) => {
-      get("/api/lobby", { lobbyName: user.lobby }).then((lobby1) => {
-        setLobby(lobby1.isPlaying);
-        const body = { userId: props.userId, lobbyName: user.lobby };
+    console.log(userList)
+    userList.forEach((obj) => {
+      if (obj === props.userId) {
+        navigate("/lobby");
 
-        userList.forEach((obj) => {
-          if (obj === props.userId) {
-            navigate("/lobby");
+        if (x) {
+          x = 0;
+          post("/api/setLobbyNotPlaying", body).then(() => {
+            console.log("isPlaying set to false");
+          });
+          post("/api/incrementWins", { userId: props.userId }).then(() => {
+            console.log("wins");
+          });
+        }
+      }
+    })
+    // get("/api/getuser", { userId: props.userId }).then((user) => {
+    //   get("/api/lobby", { lobbyName: user.lobby }).then((lobby1) => {
+    //     setLobby(lobby1.isPlaying);
+    //     const body = { userId: props.userId, lobbyName: user.lobby };
 
-            if (x) {
-              x = 0;
-              post("/api/setLobbyNotPlaying", body).then(() => {
-                console.log("isPlaying set to false");
-              });
-              post("/api/incrementWins", { userId: props.userId }).then(() => {
-                console.log("wins");
-              });
-            }
-          }
-        });
-      });
-    });
+        
+    //     });
+    //   });
+    // });
   };
 
   useEffect(() => { 

@@ -56,10 +56,14 @@ module.exports = {
         gameLogic.assignKeyMaps(input);
       });
       socket.on("someonewon", (userId) => {
+        console.log("hi i won")
         gameLogic.someoneWon(userId).then(()=>{
           if (gameLogic.gameOver(userId)){
-            console.log("game won!")
-            io.emit("gameResult", {state : "won", userList : gameLogic.getUserIdsOfGame(userId)});
+            gameLogic.getUserIdsOfGame(userId).then((userList)=> {
+              console.log("printing user list", userList)
+              io.emit("gameResult", {state : "won", userList : userList});
+            })
+            
           }
         });
         
