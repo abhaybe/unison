@@ -156,6 +156,11 @@ router.post("/setLobbyPlaying", (req, res) => {
   );
 });
 
+router.post("/setLobbyNotPlaying", (req, res) => {
+  Lobby.updateOne({ lobbyName: req.body.lobbyName }, { $set: { isPlaying: false } }).then(() =>
+    console.log("isPlaying set to false!!!", req.body.lobbyName)
+  );
+});
 router.post("/incrementGamesPlayed", (req, res) => {
   User.updateOne({ _id: req.body.userId }, { $inc: { gamesPlayed: 1 } }).then(() =>
     console.log("gamesplayed incremented!")
