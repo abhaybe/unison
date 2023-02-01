@@ -53,11 +53,11 @@ const assignKeyMaps = () => {
       }
       gameState.keyMaps[[arr[i], letter]] = [userId, movement];
       user[arr[i]].push(letter);
-      console.log(userId, movement, arr[i], letter);
+      // console.log(userId, movement, arr[i], letter);
       i += 1;
     }
   }
-  console.log(gameState.keyMaps);
+  // console.log(gameState.keyMaps);
 };
 
 const getPlayerAction = (user, key) => {

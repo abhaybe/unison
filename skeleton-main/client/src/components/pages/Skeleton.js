@@ -37,7 +37,7 @@ const Skeleton = (props) => {
       })
       .then(() => {});
   });
-  console.log({ userLobby }.userLobby);
+  // console.log({ userLobby }.userLobby);
 
   if ({ userLobby }.userLobby !== "") {
     return (

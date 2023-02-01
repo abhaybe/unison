@@ -140,7 +140,7 @@ class Canvas extends React.Component {
     if (this.state.coordinates[0] >= this.width - 25 && this.state.coordinates[1] <= 25) {
       socket.emit("someonewon", this.props.userId);
       // this.win = 1;
-      console.log("helllo there");
+      // console.log("helllo there");
     }
   }
 

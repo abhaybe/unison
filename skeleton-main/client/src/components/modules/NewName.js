@@ -18,9 +18,9 @@ const NewName = (props) => {
 
   const onSubmit = (valuet) => {
     const body = { userId: props.userId, username: valuet };
-    console.log(body);
+    //console.log(body);
     post("/api/username", body).then(() => {
-      console.log("api posted");
+      console.log("");
     });
   };
 

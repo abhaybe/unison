@@ -35,7 +35,7 @@ router.get("/whoami", (req, res) => {
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
-  console.log(req.user);
+  // console.log(req.user);
   if (req.user)
     socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
@@ -61,13 +61,13 @@ router.get("/scores", (req, res) => {
 
 router.post("/username", (req, res) => {
   User.updateOne({ _id: req.body.userId }, { $set: { username: req.body.username } }).then(() => {
-    console.log("nnnn");
+    console.log("");
   });
 });
 
 router.post("/userlobby", (req, res) => {
   User.updateOne({ _id: req.body.userId }, { $set: { lobby: req.body.lobby } }).then(() => {
-    console.log("ac");
+    console.log("");
   });
 });
 
@@ -90,10 +90,10 @@ router.post("/lobby", (req, res) => {
           // $push: { userIds: req.body.userId }
         )
           .then(() => {
-            console.log("hahhaha");
+            // console.log("hahhaha");
             socketManager.getIo().emit("lobbySocket", [req.body.userId, req.body.lobbyName]);
           })
-          .then(() => console.log("thennn"));
+          .then(() => console.log(""));
       } else {
         const newLobby = new Lobby({
           lobbyName: req.body.lobbyName,
@@ -101,7 +101,7 @@ router.post("/lobby", (req, res) => {
           isPlaying: false,
         });
         return newLobby.save().then(() => {
-          console.log("hahahahahha");
+          // console.log("hahahahahha");
           socketManager.getIo().emit("lobbySocket", [req.body.userId, req.body.lobbyName]);
         });
 
@@ -109,7 +109,7 @@ router.post("/lobby", (req, res) => {
       }
     })
     .then(() => {
-      console.log("hahaha");
+      console.log("");
     });
 });
 
@@ -122,7 +122,7 @@ router.get("/lobby", (req, res) => {
         res.send(lobby);
       }
     })
-    .then(() => console.log("fix lobby?"));
+    .then(() => console.log(""));
 });
 
 router.post("/leavelobby", (req, res) => {
@@ -147,30 +147,28 @@ router.post("/leavelobby", (req, res) => {
         }
       });
     })
-    .then(() => console.log("saas"));
+    .then(() => console.log(""));
 });
 
 router.post("/setLobbyPlaying", (req, res) => {
   Lobby.updateOne({ lobbyName: req.body.lobbyName }, { $set: { isPlaying: true } }).then(() =>
-    console.log("isPlaying set to true!!!")
+    console.log("")
   );
 });
 
 router.post("/setLobbyNotPlaying", (req, res) => {
   Lobby.updateOne({ lobbyName: req.body.lobbyName }, { $set: { isPlaying: false } }).then(() =>
-    console.log("isPlaying set to false!!!", req.body.lobbyName)
+    console.log("")
   );
 });
 router.post("/incrementGamesPlayed", (req, res) => {
   User.updateOne({ _id: req.body.userId }, { $inc: { gamesPlayed: 1 } }).then(() =>
-    console.log("gamesplayed incremented!")
+    console.log("")
   );
 });
 
 router.post("/incrementWins", (req, res) => {
-  User.updateOne({ _id: req.body.userId }, { $inc: { wins: 1 } }).then(() =>
-    console.log("wins incremented!")
-  );
+  User.updateOne({ _id: req.body.userId }, { $inc: { wins: 1 } }).then(() => console.log(""));
 });
 
 router.post("/gameStart", (req, res) => {

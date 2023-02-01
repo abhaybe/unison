@@ -32,7 +32,7 @@ const PlayerList = ({ playerlist }) => {
   //     socket.off("lobbySocket");
   //   };
   // }, []);
-  console.log(playerlist);
+  // console.log(playerlist);
   playerlist = playerlist.filter((obj) => {
     return obj !== "";
   });

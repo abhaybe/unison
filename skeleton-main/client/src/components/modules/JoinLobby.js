@@ -23,15 +23,15 @@ const JoinLobby = (props) => {
   };
 
   const onSubmit = (value) => {
-    console.log("nope", props.userId);
+    // console.log("nope", props.userId);
     // post("/api/lobby", { lobbyName: value, userId: props.userId });
     get("/api/lobby", { lobbyName: value }).then((lobby) => {
-      console.log("this is", lobby);
+      // console.log("this is", lobby);
       if (lobby.lobbyName === "") {
-        console.log("Lobby doesn't exist");
+        // console.log("Lobby doesn't exist");
         setPopup("visible");
       } else if (lobby.isPlaying === true) {
-        console.log("game in progress");
+        // console.log("game in progress");
         setPopupStart("visible");
       } else {
         post("/api/lobby", { lobbyName: value, userId: props.userId });

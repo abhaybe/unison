@@ -13,7 +13,7 @@ const Profile = (props) => {
     );
   }
   useEffect(() => {
-    console.log("helooooo", props.userId);
+    // console.log("helooooo", props.userId);
   });
   const [userName, setName] = useState("");
   const [userId, setId] = useState(0);
@@ -26,11 +26,11 @@ const Profile = (props) => {
         setId(user._id);
         setWins(user.wins);
         setGamesPlayed(user.gamesPlayed);
-        console.log("hello two", user._id);
-        console.log("hi", user);
+        // console.log("hello two", user._id);
+        // console.log("hi", user);
       })
       .then(() => {
-        console.log("hello two", userId);
+        console.log("");
       });
   });
   return (

@@ -54,8 +54,8 @@ const Lobby = (props) => {
       setName(user.username);
       setId(user._id);
       setLobby(user.lobby);
-      console.log(user.lobby);
-      console.log({ userLobby }.userLobby);
+      // console.log(user.lobby);
+      // console.log({ userLobby }.userLobby);
       setWins(user.wins);
 
       get("/api/lobby", { lobbyName: user.lobby })
@@ -63,19 +63,19 @@ const Lobby = (props) => {
           setLobbyinfo(lobby.userIds);
         })
         .then(() => {
-          console.log("done", Lobbyinfo);
+          console.log("");
         });
     });
   }, []);
 
   useEffect(() => {
     const callSocket = (data) => {
-      console.log(" workkk", data, userLobby);
+      // console.log(" workkk", data, userLobby);
       if (data[1] === userLobby) {
         // console.log("please work", Lobbyinfo, String(data));
         setLobbyinfo((oldInfo) => {
           const arr = [...oldInfo, data[0]];
-          console.log(" workkk", oldInfo, arr, data);
+          // console.log(" workkk", oldInfo, arr, data);
           return arr;
         });
       }
@@ -109,9 +109,9 @@ const Lobby = (props) => {
   });
 
   const callBack = (userList) => {
-    console.log("hiiii");
+    // console.log("hiiii");
     userList.forEach((obj) => {
-      console.log(obj, props.userId);
+      // console.log(obj, props.userId);
       if (obj === props.userId) {
         setPopup("visible");
         setPopup1("hidden");
@@ -119,17 +119,17 @@ const Lobby = (props) => {
     });
   };
   const handleSubmit = (event) => {
-    console.log("button clicked");
+    // console.log("button clicked");
     event.preventDefault();
     onSubmit && onSubmit();
   };
 
   const onSubmit = () => {
-    console.log("button clicked two");
+    // console.log("button clicked two");
     const body = { userId: props.userId, lobbyName: userLobby };
-    console.log(body);
+    // console.log(body);
     post("/api/leavelobby", body).then(() => {
-      console.log("api posted for leave lobby");
+      console.log("");
     });
 
     navigate("/");
@@ -137,12 +137,12 @@ const Lobby = (props) => {
 
   const onSubmitStart = (lobbyt) => {
     const body = { userId: props.userId, lobbyName: lobbyt };
-    console.log(body);
+    // console.log(body);
     post("/api/incrementGamesPlayed", body).then(() => {
-      console.log("gamesPlayed");
+      console.log("");
     });
     post("/api/setLobbyPlaying", body).then(() => {
-      console.log("isPlaying set to true");
+      console.log("");
     });
     navigate("/game");
   };

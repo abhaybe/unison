@@ -21,12 +21,12 @@ const CreateLobby = (props) => {
   };
 
   const onSubmit = (value) => {
-    console.log("nope", props.userId);
+    // console.log("nope", props.userId);
 
     get("/api/lobby", { lobbyName: value }).then((lobby) => {
-      console.log("this is", lobby);
+      // console.log("this is", lobby);
       if (lobby.lobbyName !== "") {
-        console.log("Lobby exists already");
+        // console.log("Lobby exists already");
         setPopup("visible");
       } else {
         post("/api/lobby", { lobbyName: value, userId: props.userId });

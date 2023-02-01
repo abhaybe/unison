@@ -16,7 +16,7 @@ const Game = (props) => {
   }
   const [userLobby, setLobby] = useState("");
   var x = 1;
-  console.log(props);
+  // console.log(props);
   const navigate = useNavigate();
 
   const callBack = (userList) => {
@@ -32,10 +32,10 @@ const Game = (props) => {
             if (x) {
               x = 0;
               post("/api/setLobbyNotPlaying", body).then(() => {
-                console.log("isPlaying set to false");
+                console.log("");
               });
               post("/api/incrementWins", { userId: props.userId }).then(() => {
-                console.log("wins");
+                console.log("");
               });
             }
           }
