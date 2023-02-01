@@ -7,6 +7,13 @@ import { socket } from "../../client-socket.js";
 import { get, post } from "../../utilities.js";
 
 const Game = (props) => {
+  if (!props.userId) {
+    return (
+      <div className="moveGame">
+        <h1>Please log in to play U&Ison.</h1>
+      </div>
+    );
+  }
   const [userLobby, setLobby] = useState("");
   var x = 1;
   console.log(props);
@@ -65,9 +72,6 @@ const Game = (props) => {
     <>
       <div className="centering">
         <Canvas userId={props.userId} />
-      </div>
-      <div className="">
-        <h1>Finished Players</h1>
       </div>
       <div className="finish-line"></div>
     </>

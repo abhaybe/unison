@@ -185,3 +185,12 @@ img {
   margin: auto;
   width: 80vw;
 }
+
+.Loser-Show {
+  position: absolute;
+  top: 45vh;
+  left: 10vw;
+  text-align: center;
+  margin: auto;
+  width: 80vw;
+}

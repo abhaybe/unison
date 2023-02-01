@@ -20,17 +20,17 @@ const Rules = (props) => {
         Each player will receive a <span className="gradient-text2">uni</span>que maze; the
         objective of the game is to reach the red box as q<span className="gradient-text2">ui</span>
         ckly as possible. Each player has four simple movement options (up, right, down, left) that
-        are randomly mapped to a random alphabetical keyboard input of a random player. Remember,
-        comm<span className="gradient-text2">uni</span>cation is key!
+        are randomly mapped to a random alphabetical keyboard input of a random player (yourself
+        included!). Remember, comm<span className="gradient-text2">uni</span>cation is key!
       </div>
       <div className="box3">
         3. Compete with other players to achieve the fastest time! Those who cr
         <span className="gradient-text3">ui</span>se through the q
-        <span className="gradient-text3">ui</span>ckest will have their names displayed on the{" "}
-        <Link to="/leaderboard">Global Leaderboard</Link>.
+        <span className="gradient-text3">ui</span>ckest and the most will have their names displayed
+        on the <Link to="/leaderboard">Global Leaderboard</Link>.
       </div>
       <div className="box4">
-        4. Make sure to \view your statistics and customize your username in the{" "}
+        4. Make sure to view your statistics and customize your username in the{" "}
         <Link to="/profile">Profile</Link> page! With that, you're ready to to play! Hopefully you
         and your friends can work together in <span class="demo rainbow">UNISON</span>!
       </div>

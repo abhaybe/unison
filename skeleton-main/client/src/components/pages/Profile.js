@@ -51,13 +51,9 @@ const Profile = (props) => {
         </div>
         <div className="skills">
           <h1 className="MainContainer-center">Statistics</h1>
-          <ul>
+          <ul className="MainContainer-center">
             <li>Wins: {userWins}</li>
             <li>Games Played: {userGamesPlayed}</li>
-            <li>Ranking: </li>
-            <li>TBD</li>
-            <li>TBD</li>
-            <li>TBD</li>
           </ul>
         </div>
       </div>
