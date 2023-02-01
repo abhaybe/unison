@@ -1,3 +1,7 @@
+.background {
+  background-color: aqua;
+}
+
 .centering {
   position: absolute;
   top: 12.5vh;

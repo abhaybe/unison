@@ -28,6 +28,7 @@ const Lobby = (props) => {
   const [userLobby, setLobby] = useState("");
   const [userWins, setWins] = useState(0);
   const [Lobbyinfo, setLobbyinfo] = useState([props.userId]);
+  const [popup, setPopup] = useState("hidden");
 
   useEffect(() => {
     navigate("/lobby");
@@ -99,6 +100,22 @@ const Lobby = (props) => {
     };
   }, [userLobby]);
 
+  useEffect(() => {
+    socket.on("gameWon", callBack);
+    return () => {
+      socket.off("gameWon", callBack);
+    };
+  });
+
+  const callBack = (userList) => {
+    console.log("hiiii");
+    userList.forEach((obj) => {
+      console.log(obj, props.userId);
+      if (obj === props.userId) {
+        setPopup("visible");
+      }
+    });
+  };
   const handleSubmit = (event) => {
     console.log("button clicked");
     event.preventDefault();

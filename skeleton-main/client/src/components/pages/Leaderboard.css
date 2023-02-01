@@ -15,7 +15,7 @@
   border-collapse: collapse;
   margin: auto;
   font-size: 0.9em;
-  min-width: 600px;
+  min-width: 30vw;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -60,4 +60,8 @@
 
 .center-title {
   padding: 10px;
+}
+
+.Move-Medals {
+  align-items: right;
 }

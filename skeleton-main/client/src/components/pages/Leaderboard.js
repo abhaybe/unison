@@ -29,8 +29,7 @@ const Leaderboard = () => {
           <tbody>
             <tr>
               <td>
-                {" "}
-                <LeaderList users={Leaders} />{" "}
+                <span className="first-place"></span> <LeaderList users={Leaders} />{" "}
               </td>
             </tr>
           </tbody>

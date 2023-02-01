@@ -43,23 +43,13 @@ const Game = (props) => {
     };
   });
 
-  // orion p orion left
-  // orion l tar down
-  // tar n tar right
-  // orion r tar up
-  // tar i orion up
-  // tar q orion down
-  // tar c orion right
-  // orion o tar left
-
   return (
     <>
       <div className="centering">
         <Canvas userId={props.userId} />
-
-        <div className="finished-list">
-          <h1>Finished Players</h1>
-        </div>
+      </div>
+      <div className="">
+        <h1>Finished Players</h1>
       </div>
       <div className="finish-line"></div>
     </>

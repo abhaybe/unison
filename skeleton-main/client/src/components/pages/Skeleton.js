@@ -44,7 +44,7 @@ const Skeleton = (props) => {
       <div className="backgroundanimation text-color">
         <div className="tab">
           {" "}
-          <h1 className="InLobby-movedownTitle">
+          <h1 className="center-div">
             Hello <span className="gradient-text text-color">{userName}</span>, let's play U&Ison!
           </h1>
           <h1 className="text-color InLobby-movedownLobby">
