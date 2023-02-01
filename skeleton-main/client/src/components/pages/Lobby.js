@@ -101,13 +101,14 @@ const Lobby = (props) => {
   }, [userLobby]);
 
   useEffect(() => {
-    socket.on("gameWon", callBack);
+    socket.on("gameResult", callBack);
     return () => {
-      socket.off("gameWon", callBack);
+      socket.off("gameResult", callBack);
     };
-  });
+  }, []);
 
-  const callBack = (userList) => {
+  const callBack = (result) => {
+    let userList = result.userList
     console.log("hiiii");
     userList.forEach((obj) => {
       console.log(obj, props.userId);

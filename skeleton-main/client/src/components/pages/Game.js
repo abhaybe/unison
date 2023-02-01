@@ -13,6 +13,7 @@ const Game = (props) => {
   console.log(props);
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const callBack = (userList) => {
     get("/api/getuser", { userId: props.userId }).then((user) => {
       get("/api/lobby", { lobbyName: user.lobby }).then((lobby1) => {
@@ -35,30 +36,22 @@ const Game = (props) => {
           }
         });
       });
+=======
+  const callBack = (result) => {
+    let userList = result.userList
+    userList.forEach((obj) => {
+      console.log(obj, props.userId);
+      if (obj === props.userId) {
+        navigate("/lobby");
+      }
+>>>>>>> 6b72dbe... use db for movement
     });
   };
 
-  // useEffect(() => {
-  //   const callBack = (userList) => {
-  //     console.log("hiiii");
-  //     userList.forEach((obj) => {
-  //       console.log(obj, props.userId);
-  //       if (obj === props.userId) {
-  //         navigate("/lobby");
-  //       }
-  //     });
-
-  //     socket.on("gameWon", callBack);
-  //   };
-  //   return () => {
-  //     socket.off("gameWon", callBack);
-  //   };
-  // });
-
-  useEffect(() => {
-    socket.on("gameWon", callBack);
+  useEffect(() => { 
+    socket.on("gameResult", callBack);
     return () => {
-      socket.off("gameWon", callBack);
+      socket.off("gameResult", callBack)
     };
   }, []);
 
@@ -71,7 +64,7 @@ const Game = (props) => {
         <h1>Finished Players</h1>
       </div>
       <div className="finish-line"></div>
-      <Timer></Timer>
+      <Timer userId={props.userId}></Timer>
     </>
   );
 };
