@@ -84,7 +84,7 @@ class Canvas extends React.Component {
   }
 
   canMove(ctx) {
-    let x = Math.floor(this.state.coordinates[0] / 50);
+    let x = Math.floor(this.state.coordinates[0] / this.unit);
     let y = Math.floor((this.height - this.state.coordinates[1]) / 50);
     let velocity = this.state.velocity;
     let walls = this.walls;

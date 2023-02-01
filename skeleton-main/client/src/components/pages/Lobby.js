@@ -169,6 +169,9 @@ const Lobby = (props) => {
   if (userLobby !== "") {
     return (
       <div className="move-down1 ">
+        <div style={{ visibility: popup }} className="Duplicate-Lobby-Margin-Move">
+          Testing
+        </div>
         <div>
           <button className="Lobby-Button1 hover" onClick={onSubmitmake}>
             Start Game
