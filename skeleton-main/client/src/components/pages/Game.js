@@ -5,7 +5,6 @@ import "./Game.css";
 import { useNavigate } from "@reach/router";
 import { socket } from "../../client-socket.js";
 import { get, post } from "../../utilities.js";
-import Timer from "../modules/Timer.js"
 
 const Game = (props) => {
   if (!props.userId) {
@@ -20,40 +19,52 @@ const Game = (props) => {
   console.log(props);
   const navigate = useNavigate();
 
-  const callBack = (result) => {
-    console.log("here")
-    let userList = result.userList
-    console.log(userList)
-    userList.forEach((obj) => {
-      if (obj === props.userId) {
-        navigate("/lobby");
+  const callBack = (userList) => {
+    get("/api/getuser", { userId: props.userId }).then((user) => {
+      get("/api/lobby", { lobbyName: user.lobby }).then((lobby1) => {
+        setLobby(lobby1.isPlaying);
+        const body = { userId: props.userId, lobbyName: user.lobby };
 
-        if (x) {
-          x = 0;
-          post("/api/setLobbyNotPlaying", body).then(() => {
-            console.log("isPlaying set to false");
-          });
-          post("/api/incrementWins", { userId: props.userId }).then(() => {
-            console.log("wins");
-          });
-        }
-      }
-    })
-    // get("/api/getuser", { userId: props.userId }).then((user) => {
-    //   get("/api/lobby", { lobbyName: user.lobby }).then((lobby1) => {
-    //     setLobby(lobby1.isPlaying);
-    //     const body = { userId: props.userId, lobbyName: user.lobby };
+        userList.forEach((obj) => {
+          if (obj === props.userId) {
+            navigate("/lobby");
 
-        
-    //     });
-    //   });
-    // });
+            if (x) {
+              x = 0;
+              post("/api/setLobbyNotPlaying", body).then(() => {
+                console.log("isPlaying set to false");
+              });
+              post("/api/incrementWins", { userId: props.userId }).then(() => {
+                console.log("wins");
+              });
+            }
+          }
+        });
+      });
+    });
   };
 
-  useEffect(() => { 
-    socket.on("gameResult", callBack);
+  // useEffect(() => {
+  //   const callBack = (userList) => {
+  //     console.log("hiiii");
+  //     userList.forEach((obj) => {
+  //       console.log(obj, props.userId);
+  //       if (obj === props.userId) {
+  //         navigate("/lobby");
+  //       }
+  //     });
+
+  //     socket.on("gameWon", callBack);
+  //   };
+  //   return () => {
+  //     socket.off("gameWon", callBack);
+  //   };
+  // });
+
+  useEffect(() => {
+    socket.on("gameWon", callBack);
     return () => {
-      socket.off("gameResult", callBack)
+      socket.off("gameWon", callBack);
     };
   }, []);
 
@@ -63,7 +74,6 @@ const Game = (props) => {
         <Canvas userId={props.userId} />
       </div>
       <div className="finish-line"></div>
-      <Timer userId={props.userId}></Timer>
     </>
   );
 };

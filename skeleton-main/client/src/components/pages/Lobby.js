@@ -102,14 +102,13 @@ const Lobby = (props) => {
   }, [userLobby]);
 
   useEffect(() => {
-    socket.on("gameResult", callBack);
+    socket.on("gameWon", callBack);
     return () => {
-      socket.off("gameResult", callBack);
+      socket.off("gameWon", callBack);
     };
-  }, []);
+  });
 
-  const callBack = (result) => {
-    let userList = result.userList
+  const callBack = (userList) => {
     console.log("hiiii");
     userList.forEach((obj) => {
       console.log(obj, props.userId);
@@ -117,7 +116,6 @@ const Lobby = (props) => {
         setPopup("visible");
         setPopup1("hidden");
       }
-      
     });
   };
   const handleSubmit = (event) => {

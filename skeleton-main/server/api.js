@@ -21,7 +21,6 @@ const router = express.Router();
 
 //initialize socket
 const socketManager = require("./server-socket");
-const gameLogic = require("./game-logic.js")
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -66,15 +65,6 @@ router.post("/username", (req, res) => {
   });
 });
 
-router.post("/gameLost", (req, res) => { // this user broadcast to everyone that the game is over
-  console.log("game lost")
-  gameLogic.getUserIdsOfGame(req.body.userId).then((userList) => {
-    console.log("lost list", userList)
-    socketManager.getIo().emit("gameResult", {state : "lost", userList : userList});
-  })
-  
-});
-
 router.post("/userlobby", (req, res) => {
   User.updateOne({ _id: req.body.userId }, { $set: { lobby: req.body.lobby } }).then(() => {
     console.log("ac");
@@ -109,8 +99,6 @@ router.post("/lobby", (req, res) => {
           lobbyName: req.body.lobbyName,
           userIds: [req.body.userId],
           isPlaying: false,
-          keyMaps: {},
-          peopleWhoWon: [],
         });
         return newLobby.save().then(() => {
           console.log("hahahahahha");

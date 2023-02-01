@@ -39,34 +39,36 @@ module.exports = {
       });
       socket.on("serverStartMove", (input) => {
         // Listen for moves from client and move player accordingly
-        console.log(input.user + " " + input.action);
-        gameLogic.getPlayerAction(input.user, input.action).then((action) => {
-          console.log("act", action)
-          if (action) io.emit("startMove", action);
-        })
+        // console.log(input.user + " " + input.action);
+        let action = gameLogic.getPlayerAction(input.user, input.action);
+        if (action) io.emit("startMove", action);
         // if (user) gameLogic.movePlayer(user._id, dir);
       });
       socket.on("serverEndMove", (input) => {
-        gameLogic.getPlayerAction(input.user, input.action).then((action) => {
-          if (action) io.emit("endMove", action);
-        })
-      })
+        let action = gameLogic.getPlayerAction(input.user, input.action);
+        if (action) io.emit("endMove", action);
+      });
       socket.on("setGameState", (input) => {
-        console.log("starting game state", input)
-        gameLogic.assignKeyMaps(input);
+        gameLogic.addPlayers(input);
+        console.log("blahhhh", input, gameLogic.gameState.players);
+        gameLogic.assignKeyMaps();
+        console.log(gameLogic.gameState);
       });
       socket.on("someonewon", (userId) => {
-        console.log("hi i won")
-        gameLogic.someoneWon(userId).then(()=>{
-          if (gameLogic.gameOver(userId)){
-            gameLogic.getUserIdsOfGame(userId).then((userList)=> {
-              console.log("printing user list", userList)
-              io.emit("gameResult", {state : "won", userList : userList});
-            })
-            
+        gameLogic.someoneWon(userId);
+        console.log(gameLogic.gameState);
+        let i = 0;
+        for (var key in gameLogic.gameState.players) {
+          if (gameLogic.gameState.players[key] === 1) {
+            i++;
           }
-        });
-        
+        }
+        console.log("i", i);
+        console.log("hello", Object.keys(gameLogic.gameState.players).length);
+        if (i === Object.keys(gameLogic.gameState.players).length) {
+          io.emit("gameWon", Object.keys(gameLogic.gameState.players));
+          console.log(Object.keys(gameLogic.gameState.players), "sdaasd");
+        }
       });
     });
   },

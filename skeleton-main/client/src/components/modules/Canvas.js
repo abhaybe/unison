@@ -10,7 +10,7 @@ class Canvas extends React.Component {
     super(props);
     this.canvasRef = React.createRef(null);
     this.animationFrameId = React.createRef(null);
-    this.state = { coordinates: [50, 100], velocity: [0, 0] , win : false};
+    this.state = { coordinates: [50, 100], velocity: [0, 0] };
     this.animate = this.animate.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
@@ -18,11 +18,10 @@ class Canvas extends React.Component {
     this.handleActionEnd = this.handleActionEnd.bind(this);
     this.draw_walls = this.draw_walls.bind(this);
     this.walls = createMaze();
-    // this.circleRadius = 10;
+    this.circleRadius = 10;
     this.maxx = this.walls[0].length;
     this.maxy = this.walls[0][0].length;
-    this.unit = Math.floor(Math.min(window.innerHeight, window.innerWidth)/13);
-    this.circleRadius = Math.floor(this.unit/5);
+    this.unit = Math.floor(Math.min(window.innerHeight, window.innerWidth) / 13);
     this.width = this.maxx * this.unit;
     this.height = this.maxy * this.unit;
     this.state = { coordinates: [25, this.height - 25], velocity: [0, 0] };
@@ -138,11 +137,10 @@ class Canvas extends React.Component {
   }
 
   didWin() {
-
-    if (this.state.coordinates[0] >= this.width - 25 && this.state.coordinates[1] <= 25 && !this.state.win) {
+    if (this.state.coordinates[0] >= this.width - 25 && this.state.coordinates[1] <= 25) {
       socket.emit("someonewon", this.props.userId);
-      this.setState({win : true});
-      console.log("helllo there, i won");
+      // this.win = 1;
+      console.log("helllo there");
     }
   }
 
