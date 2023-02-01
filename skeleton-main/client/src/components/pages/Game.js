@@ -5,6 +5,7 @@ import "./Game.css";
 import { useNavigate } from "@reach/router";
 import { socket } from "../../client-socket.js";
 import { get, post } from "../../utilities.js";
+import Timer from "../modules/Timer.js"
 
 const Game = (props) => {
   const [userLobby, setLobby] = useState("");
@@ -70,6 +71,7 @@ const Game = (props) => {
         <h1>Finished Players</h1>
       </div>
       <div className="finish-line"></div>
+      <Timer></Timer>
     </>
   );
 };

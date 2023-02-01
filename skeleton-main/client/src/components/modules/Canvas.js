@@ -18,10 +18,11 @@ class Canvas extends React.Component {
     this.handleActionEnd = this.handleActionEnd.bind(this);
     this.draw_walls = this.draw_walls.bind(this);
     this.walls = createMaze();
-    this.circleRadius = 10;
+    // this.circleRadius = 10;
     this.maxx = this.walls[0].length;
     this.maxy = this.walls[0][0].length;
-    this.unit = Math.floor(Math.min(window.innerHeight, window.innerWidth) / 13);
+    this.unit = Math.floor(Math.min(window.innerHeight, window.innerWidth)/13);
+    this.circleRadius = Math.floor(this.unit/5);
     this.width = this.maxx * this.unit;
     this.height = this.maxy * this.unit;
     this.state = { coordinates: [25, this.height - 25], velocity: [0, 0] };
