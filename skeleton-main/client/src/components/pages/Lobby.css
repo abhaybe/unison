@@ -82,7 +82,7 @@ img {
 
 .playerlist {
   position: absolute;
-  top: 40vh;
+  top: 50vh;
   left: 20vw;
   width: 60vw;
   text-align: center;
@@ -175,4 +175,13 @@ img {
   left: 55%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
+}
+
+.Winner-Show {
+  position: absolute;
+  top: 35vh;
+  left: 10vw;
+  text-align: center;
+  margin: auto;
+  width: 80vw;
 }

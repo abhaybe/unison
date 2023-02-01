@@ -169,9 +169,6 @@ const Lobby = (props) => {
   if (userLobby !== "") {
     return (
       <div className="move-down1 ">
-        <div style={{ visibility: popup }} className="Duplicate-Lobby-Margin-Move">
-          Testing
-        </div>
         <div>
           <button className="Lobby-Button1 hover" onClick={onSubmitmake}>
             Start Game
@@ -195,8 +192,15 @@ const Lobby = (props) => {
               You are currently in Lobby: <span className="gradient-text">{userLobby}</span>
             </h1>
           </div>
-          <div className="playerlist moveNameList">
+          <div className="playerlist">
             <PlayerList playerlist={Lobbyinfo} />
+          </div>
+          <div style={{ visibility: true }} className="Winner-Show">
+            <h3>
+              Congragulations! You and your team completed the maze in{" "}
+              <span className="gradient-text">"insert time"</span> seconds! Play again to improve
+              your time!
+            </h3>
           </div>
         </div>
       </div>
