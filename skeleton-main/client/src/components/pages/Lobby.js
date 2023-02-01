@@ -29,6 +29,7 @@ const Lobby = (props) => {
   const [userWins, setWins] = useState(0);
   const [Lobbyinfo, setLobbyinfo] = useState([props.userId]);
   const [popup, setPopup] = useState("hidden");
+  const [popup1, setPopup1] = useState("hidden");
 
   useEffect(() => {
     navigate("/lobby");
@@ -114,6 +115,7 @@ const Lobby = (props) => {
       console.log(obj, props.userId);
       if (obj === props.userId) {
         setPopup("visible");
+        setPopup1("hidden");
       }
       
     });
@@ -197,11 +199,16 @@ const Lobby = (props) => {
           <div className="playerlist">
             <PlayerList playerlist={Lobbyinfo} />
           </div>
-          <div style={{ visibility: true }} className="Winner-Show">
+          <div style={{ visibility: popup }} className="Winner-Show">
             <h3>
-              Congragulations! You and your team completed the maze in{" "}
-              <span className="gradient-text">"insert time"</span> seconds! Play again to improve
-              your time!
+              Congragulations! You and your team succesfully completed the maze in{" "}
+              <span className="gradient-text">unison</span>!
+            </h3>
+          </div>
+          <div style={{ visibility: popup1 }} className="Loser-Show">
+            <h3>
+              Oh no, you and your team ran out of time! Remember, comm
+              <span className="gradient-text">uni</span>cation is key!{" "}
             </h3>
           </div>
         </div>
